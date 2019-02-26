@@ -1,0 +1,153 @@
+@charset "utf -8";
+
+/*
+=============================
+         common
+=============================
+*/
+
+html {
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    height: 100%;
+}
+
+.sidebar {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-color: rgba(40,57,101,.9);
+}
+
+.main{
+    float: right;
+    width: 80%;
+    height: 100%;
+    background-color: white;
+}
+
+.content {
+    padding: 10px 100px;
+}
+
+/*
+=============================
+         sidebar
+=============================
+*/
+
+.appName {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    color: white;
+}
+
+.appName a {
+    text-decoration: none;
+    color: white;
+}
+
+.appName a:hover {
+     color: #f4511e;
+}
+
+ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+    border-bottom: 1px solid #f4511e;
+    padding-left: 30px;
+    line-height: 60px;
+}
+
+ul li:first-child {
+    border-top: 1px solid #f4511e;
+
+}
+
+ul li:hover {
+    background-color: #f4511e;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    display: block;
+    line-height: 60px;
+}
+
+.active {
+    background-color: #f4511e;
+}
+
+#title {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 35px;
+    text-align: center;
+}
+
+.formContainer {
+    border-radius: 5px;
+    background-color: #6a6f8c;
+    padding: 20px;
+  }
+  input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+
+  input[type=email]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #f4511e;
+    color: white;
+    padding: 15px 55px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    
+  }
+
+
+  input[type=button] {
+    background-color: #f4511e;
+    color: white;
+    padding: 15px 55px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    float: right;
+    
+  }
+
