@@ -97,13 +97,14 @@ ul li a {
 #title {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 35px;
-    text-align: center;
+    margin-top: 23px;
 }
 
 .formContainer {
     border-radius: 5px;
     background-color: #6a6f8c;
     padding: 20px;
+    margin-top: 0%;
   }
   input[type=text], textarea {
     width: 100%;
@@ -140,7 +141,7 @@ ul li a {
 
 
   input[type=button] {
-    background-color: #f4511e;
+    background-color: #9be23f;
     color: white;
     padding: 15px 55px;
     border: none;
@@ -149,15 +150,6 @@ ul li a {
     font-size: 20px;
     float: right;
     
-  }
-
-  .avatar {
-    vertical-align: middle;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin: 10px;
-    padding: 0;
   }
 
  #spec{
@@ -200,4 +192,50 @@ ul li a {
   #myTable tr.header, #myTable tr:hover {
     background-color: #f1f1f1;
 
+  }
+
+  
+#snackbar {
+    visibility: hidden; 
+    min-width: 250px; 
+    margin-left: -125px; 
+    background-color: #333; 
+    color: #fff; 
+    text-align: center;
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed;
+    z-index: 1; 
+    left: 50%;
+    bottom: 30px; 
+  }
+  
+  
+  #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
   }
