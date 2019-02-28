@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <Title>Start Group</Title>
-    <link rel="stylesheet" href="../CSS/dashboard.css">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="shortcut icon" href= "../Images/favicon.ico">
+    <link rel="stylesheet" href="./style/dashboard.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="shortcut icon" href= "./images/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   </head>
   <body>
@@ -19,6 +19,7 @@
             <li><a href="SentMessage.html"><i class="fa fa-inbox"></i>&nbsp; &nbsp; &nbsp; Sent Messages</a></li>
             <li><a href="draftMessage.html"><i class="fa fa-inbox"></i>&nbsp; &nbsp; &nbsp; Draft Messages</a></li>
             <li class="active"><a href="createGroup.html"><i class="fa fa-user-plus"></i>&nbsp; &nbsp; &nbsp; Start a group</a></li>
+            <li><a href="../Login.html"><i class="	fa fa-power-off"></i>&nbsp; &nbsp; &nbsp;  Log out</a></li>
         </ul>
       </div>
       <div class="main">
@@ -26,10 +27,10 @@
            <!-- insert the contents here please-->
            <h3 id = "spec">Start a Group</h3>
            <p id= "para">Groups help you starting a conversation with more than one person, So give your group a topic, add in members and let us do the rest. </p>
-           <div class="formContainer">
+           <div class="formContainer" style="margin-top: 5%;">
             <form>
               <label for="Recepient">Group Name</label>
-              <input type="email" id = "emailId" name= "Email" placeholder="Recepient Email" required>
+              <input type="text" id = "groupId" name= "group" placeholder="Enter the Group name" required>
 
               <label for="sujet">Topic</label>
               <input type="text" id = "subj" name= "Subject" placeholder="What should we talk about here?" required>
@@ -38,11 +39,13 @@
               <input id="myInput" type="text" name="members" placeholder="Group Members" required>
 
               <input type="submit" value="Create Group">
-              <input type="button" value="Cancel">
+              <input type="button" value="Cancel" onclick="window.open(Inbox.html);">
               
 
             </form>
            </div> 
+
+           
           </div>
     </div>
 
