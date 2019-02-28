@@ -163,7 +163,7 @@ ul li a {
  }
 
  #myInput1 {
-    background-image: url('/css/searchicon.png');
+    background-image: url('../images/toolbar_find.png');
     background-position: 10px 10px;
     background-repeat: no-repeat;
     width: 100%;
