@@ -28,24 +28,25 @@
            <h3 id="title">Email Composition</h3>
            <br>
            
-           <div class="formContainer">
+           <div class="formContainer" style="height: 450px;">
              <form>
                <label for="Recepient">Recepient</label>
-               <input type="email" id = "emailId" name= "Email" placeholder="Recepient Email">
+               <input type="email" id = "emailId" name= "Email" placeholder="Recepient Email" required>
 
                <label for="sujet">Subject</label>
-               <input type="text" id = "subj" name= "Subject" placeholder="Email Topic">
+               <input type="text" id = "subj" name= "Subject" placeholder="Email Topic" required>
 
                <label for="subject">Message</label>
-               <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+               <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
 
-               <input type="submit" value="Save as Draft" onsubmit="myFunction();">
-               <input type="button" value="SEND" onclick="myFunction()">
+               <input type="submit" value="SEND" onclick="myFunction()" id= "btnbtn">
+               <input type="button" value="Save as Draft" onclick="myFunction2();">
                
 
              </form>
            </div>
            <div id="snackbar">Message Sent</div>
+           <div id="snackbar2">Saved as draft</div>
         </div>
  
       </div>
