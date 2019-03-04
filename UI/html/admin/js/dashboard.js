@@ -53,8 +53,4 @@ function myFunctionS() {
       }
     }
   }
-<<<<<<< HEAD
-
-=======
 }
->>>>>>> ch-env-setup-#164354382
