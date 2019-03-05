@@ -4,7 +4,7 @@
   "description": "This is a messaging platform which let its user interact with each other. #AndelaChallenge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha  --require @babel/register server/tests/*.js --reporter mochawesome --timeout 10000ms",
     "start": "nodemon --exec babel-node server/src/server.js",
     "build": "babel server/src --out server/dist",
     "serve": "node server/dist/server.js"
@@ -31,10 +31,14 @@
     "@babel/core": "^7.3.4",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "eslint": "^5.15.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "mocha": "^6.0.2",
+    "mochawesome": "^3.1.1",
     "nodemon": "^1.18.10"
   }
 }
