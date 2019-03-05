@@ -8,6 +8,7 @@ class Messages {
         ,parentMessageId
         ,senderId
         ,receiverId
+        ,receiverEmail
     } = {}){
         this.id = id;
         this.createdOn = createdOn;
@@ -17,6 +18,7 @@ class Messages {
         this.parentMessageId = parentMessageId;
         this.senderId = senderId;
         this.receiverId = receiverId;
+        this.receiverEmail = receiverEmail;
     }
     
 }
