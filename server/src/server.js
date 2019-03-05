@@ -1,11 +1,21 @@
 import express from 'express';
+import routes from './routers/route'
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(routes);
 
-app.get('/', (req, res) => res.status(200).send({ message: 'Welcome to Epic Mail RestApi Endpoint' }));
+app.use('*', (req,res) => res.status(404).send({
+   'Status': 404,
+   'Message': 'URL not Found'
+  }));
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log('app running on port 4000');
+
+const PORT = process.env.PORT || 9000;
+app.listen(PORT, () => {
+  console.log(`app running on port ${ PORT }`);
 });
+
+export default app;
