@@ -13,7 +13,7 @@ app.use('*', (req,res) => res.status(404).send({
   }));
 
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 3030;
 app.listen(PORT, () => {
   console.log(`app running on port ${ PORT }`);
 });
