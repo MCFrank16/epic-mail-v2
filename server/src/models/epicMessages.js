@@ -18,6 +18,6 @@ class Messages {
         this.senderId = senderId;
         this.receiverId = receiverId;
     }
-
+    
 }
  export { epicMessages, Messages };
