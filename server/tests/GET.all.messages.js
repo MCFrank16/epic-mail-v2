@@ -2,13 +2,13 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../src/server';
 
-const should = chai.should();
-const expect = chai.expect();
+chai.should();
+chai.expect();
 
 chai.use(chaiHttp);
 
 describe('Get All Messages',() => {
-  it('should Get the Messages', (done) =>{
+  it('should Get the Messages and send 200 status code', (done) =>{
     chai.request(server)
     .get('/api/v1/Messages')
     .end((err,res) => {
