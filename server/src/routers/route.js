@@ -20,4 +20,7 @@ router.get('/api/v1/Messages/Unread', epicControllers.getUnreadMessages);
 // Get all sent Messages
 router.get('/api/v1/Messages/Sent', epicControllers.getSentMessages);
 
+// Get Message by Id
+router.get('/api/v1/Messages/:id', epicControllers.getByMessageId);
+
 export default router;

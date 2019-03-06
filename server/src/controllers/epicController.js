@@ -77,6 +77,29 @@ const messageData = {
            messages.data = unRead;
         }
         return res.send(messages)
+     },
+
+     getByMessageId(req,res){
+         let val = new Messages();
+         const { id } = req.params;
+         let messages = {
+             status: 200,
+             data: {}
+         }
+         const result = epicMessages.find( val => val.id === id);
+         if(!result){
+            messages = {
+                status: 200,
+                message: 'No Message found with such ID'
+            }
+         } else {
+             messages = {
+                 status: 200,
+                 data: result
+             }
+         }
+         return res.send(messages);
+
      }
 
     } 
