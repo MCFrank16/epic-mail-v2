@@ -1,49 +1,128 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../src/server';
+import { Messages } from '../src/models/epicMessages';
+import uuid from 'uuid';
 
-const should = chai.should();
-const expect = chai.expect();
+let should =  chai.should;
+let expect = chai.expect;
 
 chai.use(chaiHttp);
 
 describe('Post Messages', (done) =>{
-it('should check for all fields requirements', (done) => {
-  let body = {
-    subject: "",
-    message: "",
-    receiverEmail: ""
-  }
+it('should save an email and send a 201 status', (done) => {
+  let dummy = new Messages({
+    id:uuid.v4(),
+    createdOn:Date.now().toString(),
+    subject: 'Hey Sir!!',
+    message: 'Sir Bimeze bite?',
+    status:  'read',
+    parentMessageId: uuid.v4(),
+    senderId: uuid.v4(),
+    receiverId: uuid.v4(),
+    receiverEmail: 'Mecfrank16@gmail.com'
+  });
+
   
  chai.request(server)
  .post('/api/v1/Messages')
- .send(body)
+ .send(dummy)
  .end((err,res) => {
    
-   res.body.should.have.status(400);
-   res.body.should.have.property('message').eql('Please fill in all the required fields');
+   res.body.should.have.status(201);
    done();
  });
 
 });
 
-it('should post a new Email', (done) => {
-  let body = {
-    subject: 'Bite c?',
-    message: 'ko twaburanye waburiye he?',
-    status: 'sent',
-    receiverEmail: 'Mecfrank@yahoo.fr'
-  };
-  chai.request(server)
-  .post('/api/v1/Messages')
-  .send(body)
-  .end((err,res) => {
-     res.body.should.have.status(201);
-     res.body.should.be.a('object');
-     done();
-
+it('should save an email as an new object', (done) => {
+  let dummy = new Messages({
+    id:uuid.v4(),
+    createdOn:Date.now().toString(),
+    subject: 'Hey Sir!!',
+    message: 'Sir Bimeze bite?',
+    status:  'read',
+    parentMessageId: uuid.v4(),
+    senderId: uuid.v4(),
+    receiverId: uuid.v4(),
+    receiverEmail: 'Mecfrank16@gmail.com'
   });
 
-})
+  
+ chai.request(server)
+ .post('/api/v1/Messages')
+ .send(dummy)
+ .end((err,res) => {
+   
+   res.body.should.have.an('object');
+   done();
+ });
+
+});
+
+
+it('should have 9 property', (done) => {
+  let dummy = new Messages({
+    id:uuid.v4(),
+    createdOn:Date.now().toString(),
+    subject: 'Hey Sir!!',
+    message: 'Sir Bimeze bite?',
+    status:  'read',
+    parentMessageId: uuid.v4(),
+    senderId: uuid.v4(),
+    receiverId: uuid.v4(),
+    receiverEmail: 'Mecfrank16@gmail.com'
+  });
+
+  
+ chai.request(server)
+ .post('/api/v1/Messages')
+ .send(dummy)
+ .end((err,res) => {
+
+  expect(dummy).to.have.property('id');
+  expect(dummy).to.have.property('createdOn');
+  expect(dummy).to.have.property('subject');
+  expect(dummy).to.have.property('message');
+  expect(dummy).to.have.property('status');
+  expect(dummy).to.have.property('parentMessageId');
+  expect(dummy).to.have.property('senderId');
+  expect(dummy).to.have.property('receiverId');
+  expect(dummy).to.have.property('receiverEmail');
+   
+   done();
+ });
+
+});
+
+it('should check for the 3 required fields', (done) => {
+  let dummy = new Messages({
+    id:uuid.v4(),
+    createdOn:Date.now().toString(),
+    subject: '',
+    message: '',
+    status:  'read',
+    parentMessageId: uuid.v4(),
+    senderId: uuid.v4(),
+    receiverId: uuid.v4(),
+    receiverEmail: ''
+  });
+
+  
+ chai.request(server)
+ .post('/api/v1/Messages')
+ .send(dummy)
+ .end((err,res) => {
+
+
+  
+  expect(dummy).to.have.property('subject').to.equal('');
+  expect(dummy).to.have.property('message').to.equal('');
+  expect(dummy).to.have.property('receiverEmail').to.equal('');
+   
+   done();
+ });
+
+});
 
 });
