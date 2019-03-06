@@ -13,11 +13,19 @@ describe('Get All Messages',() => {
     .get('/api/v1/Messages')
     .end((err,res) => {
       res.should.have.status(200);
-      res.body.should.be.a('object');
       done();
 
-    });
-  });
+    })
+  })
+
+  it('should check for the response to be an object', (done) => {
+    chai.request(server)
+    .get('/api/v1/Messages')
+    .end((err,res) => {
+      res.body.should.be.an('object');
+      done();
+    })
+  })
 });
 
 
