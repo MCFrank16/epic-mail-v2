@@ -16,7 +16,7 @@ const messageData = {
     // post/ create a message
     postMessage (req,res){
       if(!req.body.message || !req.body.subject || !req.body.receiverEmail) {
-          res.status(400).send({
+          return res.send({
               status: 400,
               message: 'Please fill in all the required fields'
           });
@@ -37,7 +37,7 @@ const messageData = {
           });
 
           epicMessages.push(newPost);
-          return res.status(201).send({
+          return res.send({
               status: 201,
               data: newPost
           });
