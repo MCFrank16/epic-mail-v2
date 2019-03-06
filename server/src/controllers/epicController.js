@@ -59,7 +59,25 @@ const messageData = {
             messages.data = unRead;
          }
          return res.send(messages)
-      }
+      },
+
+      getSentMessages(req,res) {
+        let val = new Messages();
+        let messages={
+            status: 200,
+            data: []
+        };
+        const unRead = epicMessages.filter( val => val.status === 'Sent');
+        if(!unRead.length){
+           messages={
+               status: 200,
+               message: 'No sent message found'
+           };
+        }else{
+           messages.data = unRead;
+        }
+        return res.send(messages)
+     }
 
     } 
 
