@@ -14,4 +14,7 @@ router.get('/api/v1/Messages', epicControllers.getAllMessages);
 // POST/create/send a message
 router.post('/api/v1/Messages',epicControllers.postMessage);
 
+// Get all unread Messages
+router.get('/api/v1/Messages/Unread', epicControllers.getUnreadMessages);
+
 export default router;

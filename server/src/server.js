@@ -13,9 +13,9 @@ app.use('*', (req,res) => res.status(404).send({
   }));
 
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`app running on port ${ PORT }`);
+  console.log(`the app is running at http://localhost: ${ PORT }`);
 });
 
 export default app;
