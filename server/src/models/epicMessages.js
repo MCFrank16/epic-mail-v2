@@ -20,11 +20,5 @@ class Messages {
         this.receiverId = receiverId;
         this.receiverEmail = receiverEmail;
     }
-
-    getUnread(status){
-      const stat = status || this.status;
-      const unReadMessages = epicMessages.filter( val => val.status === stat);
-    }
-    
 }
  export { epicMessages, Messages };

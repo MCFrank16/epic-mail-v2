@@ -41,8 +41,29 @@ const messageData = {
               status: 201,
               data: newPost
           });
+      },
+    
+      getUnreadMessages(req,res) {
+         let val = new Messages();
+         let messages={
+             status: 200,
+             data: []
+         };
+         const unRead = epicMessages.filter( val => val.status === 'Unread');
+         if(!unRead.length){
+            messages={
+                status: 200,
+                message: 'No unread message found'
+            };
+         }else{
+            messages.data = unRead;
+         }
+         return res.send(messages)
       }
-    }
+
+    } 
+
+
 
 
 export default messageData;
