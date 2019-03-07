@@ -23,4 +23,7 @@ router.get('/api/v1/Messages/Sent', epicControllers.getSentMessages);
 // Get Message by Id
 router.get('/api/v1/Messages/:id', epicControllers.getByMessageId);
 
+// Delete Message by Id
+router.delete('/api/v1/Messages/:id', epicControllers.deleteMessageById);
+
 export default router;

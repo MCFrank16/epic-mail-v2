@@ -100,8 +100,33 @@ const messageData = {
          }
          return res.send(messages);
 
-     }
+     },
 
+     
+     deleteMessageById(req,res){
+        let val = new Messages();
+        const { id } = req.params;
+        let messages = {
+            status: 200,
+            data: {}
+        }
+        const result = epicMessages.find( val => val.id === id);
+        const delety = epicMessages.indexOf(result);
+        epicMessages.splice(delety,1);
+        if(!result){
+           messages = {
+               status: 200,
+               message: 'No Message found with such ID'
+           }
+        } else {
+            messages = {
+                status: 200,
+                message: 'Message Deleted'
+            }
+        }
+        return res.send(messages);
+
+    }
     } 
 
 
