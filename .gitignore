@@ -4,3 +4,4 @@ server/dist
 mochawesome-report
 coverage
 .nyc_output
+.coveralls.yml
