@@ -2,3 +2,5 @@
 node_modules
 server/dist
 mochawesome-report
+coverage
+.nyc_output
