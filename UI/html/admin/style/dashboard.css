@@ -345,6 +345,16 @@ ul li a {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
   }
-
-  
-  
+ 
+  .tile_div a {
+    display: block;
+    float: left;
+    height: 40px;
+    width: 250px;
+    margin-right: 5px;
+    background-color: #f4511e;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    color: aliceblue;
+}
