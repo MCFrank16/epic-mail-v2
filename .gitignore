@@ -2,3 +2,4 @@
 node_modules
 server/dist
 mochawesome-report
+node_modules
