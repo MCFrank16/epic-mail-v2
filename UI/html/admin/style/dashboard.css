@@ -129,6 +129,22 @@ ul li a {
     margin-bottom: 16px;
     resize: vertical;
   }
+  #add {
+    width: 650px;
+  }
+
+  #remove {
+    width: 650px;
+  }
+
+  #btn5{
+    width: 147px;
+    height: 42px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+
+  }
 
   input[type=email]{
     width: 100%;
@@ -167,6 +183,32 @@ ul li a {
     float: right;
     
   }
+
+  #renamebtn {
+    background-color: #f4511e;
+    color: white;
+    padding: 12px 50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    float: right;
+    height: 45px;
+  }
+
+  #renamebtn2 {
+    background-color: #f4511e;
+    color: white;
+    padding: 12px 50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    float: left;
+    height: 45px;
+  }
+
+
 
  #spec{
    font-family: 'Courier New', Courier, monospace;
@@ -358,3 +400,6 @@ ul li a {
     text-decoration: none;
     color: aliceblue;
 }
+
+
+
