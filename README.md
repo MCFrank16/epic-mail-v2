@@ -1,11 +1,7 @@
 # EpicMail
 
 [![Build Status](https://travis-ci.com/MCFrank16/EpicMail.svg?branch=develop)](https://travis-ci.com/MCFrank16/EpicMail)
-
-[![Coverage Status](https://coveralls.io/repos/github/MCFrank16/EpicMail/badge.svg?branch=develop)](https://coveralls.io/github/MCFrank16/EpicMail?branch=develop)
-
-
-
+[![Coverage Status](https://coveralls.io/repos/github/MCFrank16/EpicMail/badge.svg?branch=develop)](https://coveralls.io/github/MCFrank16/EpicMail)
 
 This is a messaging platform which let its user interact with each other. #AndelaChallenge
 
