@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # EpicMail
 
 [![Build Status](https://travis-ci.com/MCFrank16/EpicMail.svg?branch=develop)](https://travis-ci.com/MCFrank16/EpicMail)
@@ -8,8 +6,10 @@
 
 This is a messaging platform which let its user interact with each other. #AndelaChallenge
 
-# Heroku Link: https://epik-mail.herokuapp.com/api/v1
-# UI Link: https://mcfrank16.github.io/EpicMail/
+# Heroku Link: 
+https://epik-mail.herokuapp.com/api/v1
+# UI Link: 
+https://mcfrank16.github.io/EpicMail/
 
 ### API Endpoints
 > This involves primarily creating RESTful API endpoints.
@@ -24,4 +24,3 @@ This is a messaging platform which let its user interact with each other. #Andel
 | GET    /api/v1/Messages/Sent  | Get all sent messages                           |
 | Delete /api/v1/Message/:id    | Delete a specific Message By its Identification |
 
->>>>>>> 8cfb47e887f2c0031cd1d6ff3428b19c44f261e6
