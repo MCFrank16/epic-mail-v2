@@ -44,87 +44,87 @@ const messageData = {
       },
     
       getUnreadMessages(req,res) {
-         let val = new Messages();
-         let messages={
+         let unreadVal = new Messages();
+         let unreadMessages={
              status: 200,
              data: []
          };
-         const unRead = epicMessages.filter( val => val.status === 'Unread');
+         const unRead = epicMessages.filter( unreadVal => unreadVal.status === 'Unread');
          if(!unRead.length){
-            messages={
+            unreadMessages={
                 status: 200,
                 message: 'No unread message found'
             };
          }else{
-            messages.data = unRead;
+            unreadMessages.data = unRead;
          }
-         return res.send(messages)
+         return res.send(unreadMessages)
       },
 
       getSentMessages(req,res) {
-        let val = new Messages();
-        let messages={
+        let sentVal = new Messages();
+        let sentMessages={
             status: 200,
             data: []
         };
-        const unRead = epicMessages.filter( val => val.status === 'Sent');
+        const unRead = epicMessages.filter( sentVal => sentVal.status === 'Sent');
         if(!unRead.length){
-           messages={
+           sentMessages={
                status: 200,
                message: 'No sent message found'
            };
         }else{
-           messages.data = unRead;
+           sentMessages.data = unRead;
         }
-        return res.send(messages)
+        return res.send(sentMessages)
      },
 
      getByMessageId(req,res){
-         let value = new Messages();
+         let byId = new Messages();
          const { id } = req.params;
-         let mesages = {
+         let byIdMessages = {
              status: 200,
              data: {}
          }
-         const result = epicMessages.find( value => value.id === id);
+         const result = epicMessages.find( byId => byId.id === id);
          if(!result){
-            mesages = {
+            byIdMessages = {
                 status: 200,
                 message: 'No Message found with such ID'
             }
          } else {
-             mesages = {
+             byIdMessages = {
                  status: 200,
                  data: result
              }
          }
-         return res.send(mesages);
+         return res.send(byIdMessages);
 
      },
 
      
      deleteMessageById(req,res){
-        let val = new Messages();
+        let deleteval = new Messages();
         const { id } = req.params;
-        let messages = {
+        let deleteMessages = {
             status: 200,
             data: {}
         }
-        const result = epicMessages.find( val => val.id === id);
+        const result = epicMessages.find( deleteval => deleteval.id === id);
         const delety = epicMessages.indexOf(result);
         epicMessages.splice(delety,1);
         if(!result){
-           messages = {
+           deleteMessages = {
                status: 200,
                message: 'No Message found with such ID'
            }
         } else {
-            messages = {
+            deleteMessages = {
                 status: 200,
                 message: 'Message Deleted'
             }
         }
-        return res.send(messages);
+        return res.send(deleteMessages);
 
     }
     } 
