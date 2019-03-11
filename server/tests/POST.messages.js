@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../src/server';
-import { Messages } from '../src/models/epicMessages';
+import { Messages } from '../src/Data-Structure/models/epicMessages';
 import uuid from 'uuid';
 
 let should =  chai.should;

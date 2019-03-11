@@ -80,25 +80,25 @@ const messageData = {
      },
 
      getByMessageId(req,res){
-         let val = new Messages();
+         let value = new Messages();
          const { id } = req.params;
-         let messages = {
+         let mesages = {
              status: 200,
              data: {}
          }
-         const result = epicMessages.find( val => val.id === id);
+         const result = epicMessages.find( value => value.id === id);
          if(!result){
-            messages = {
+            mesages = {
                 status: 200,
                 message: 'No Message found with such ID'
             }
          } else {
-             messages = {
+             mesages = {
                  status: 200,
                  data: result
              }
          }
-         return res.send(messages);
+         return res.send(mesages);
 
      },
 
