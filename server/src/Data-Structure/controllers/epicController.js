@@ -1,5 +1,6 @@
 import uuid from 'uuid';
 import { epicMessages,Messages} from '../models/epicMessages';
+import validate from '../Helpers/validate';
 
 class messageData  {
     
@@ -18,13 +19,36 @@ class messageData  {
 
         const { message, subject, receiverEmail, status } = req.body;
 
-      if(!message || !subject || !receiverEmail) {
-          return res.send({
-              status: 400,
-              message: 'Please fill in all the required fields'
-          });
+        if(!message || !subject || !receiverEmail) {
+            return res.send({
+                status: 400,
+                message: 'Please fill in all the required fields'
+            });
+  
+        }
 
-          }
+        if(!validate.emailValidation(receiverEmail)){
+            return res.send({
+                status: 400,
+                message: 'Please enter a valid Email'
+            });
+        }
+
+        if(!validate.stringValidation(message)) {
+            return res.send({
+                status: 400,
+                message: 'Please enter your message'
+            });
+        }
+
+        if(!validate.subjectValidation(subject)) {
+            return res.send({
+                statu: 400,
+                message: 'Please enter the subject'
+            });
+        }
+
+    
 
           const newPost = new Messages ({
             id: uuid.v4(),
