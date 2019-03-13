@@ -1,5 +1,5 @@
 import uuid from 'uuid';
-import { epicMessages,Messages} from '../models/epicMessages';
+import { epicMessages,Messages} from '../Models/EpicMessages';
 import validate from '../Helpers/validate';
 
 class messageData  {

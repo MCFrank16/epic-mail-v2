@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../src/server';
-import { Messages } from '../src/Data-Structure/models/epicMessages';
+import { Messages } from '../src/DataStructure/Models/EpicMessages';
 import uuid from 'chai-uuid';
 import date from 'chai-datetime';
 

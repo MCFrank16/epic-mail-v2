@@ -1,5 +1,5 @@
 import express from 'express';
-import epicControllers from '../controllers/epicController';
+import epicControllers from '../Controllers/EpicController';
 
 
 const router = express.Router();

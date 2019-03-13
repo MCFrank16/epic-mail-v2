@@ -17,10 +17,10 @@ https://mcfrank16.github.io/EpicMail/
 #### Features
 | Endpoints                     |         Functionality
 | ----------------------        |------------------------                         | 
-| GET    /api/v1/Messages       | Get all Messages.                               | 
-| GET    /api/v1/Messages/:id   | Fetch a specific Message By its Identification  |
-| POST   /api/v1/Message        | Create / send a new Message                     |
-| GET    /api/v1/Messages/Unread| Get all unread messages                         |
-| GET    /api/v1/Messages/Sent  | Get all sent messages                           |
-| Delete /api/v1/Message/:id    | Delete a specific Message By its Identification |
+| GET    /api/v1/messages       | Get all Messages.                               | 
+| GET    /api/v1/messages/:id   | Fetch a specific Message By its Identification  |
+| POST   /api/v1/message        | Create / send a new Message                     |
+| GET    /api/v1/messages/Unread| Get all unread messages                         |
+| GET    /api/v1/messages/Sent  | Get all sent messages                           |
+| Delete /api/v1/message/:id    | Delete a specific Message By its Identification |
 
