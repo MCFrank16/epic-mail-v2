@@ -4,7 +4,7 @@ import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 
 const app = express();
-const swaggerDocument = YAML.load('server/src/docs/ApiSwagger.yml');
+const swaggerDocument = YAML.load('server/src/Docs/ApiSwagger.yml');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
