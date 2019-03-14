@@ -19,25 +19,14 @@ class messageData  {
 
         const { message, subject, receiverEmail, status } = req.body;
 
-        if(!message || !subject || !receiverEmail) {
-            return res.send({
-                status: 400,
-                message: 'Please fill in all the required fields'
-            });
-  
-        }
+       
+
+        
 
         if(!validate.emailValidation(receiverEmail)){
             return res.send({
                 status: 400,
                 message: 'Please enter a valid Email'
-            });
-        }
-
-        if(!validate.stringValidation(message)) {
-            return res.send({
-                status: 400,
-                message: 'Please enter your message'
             });
         }
 
@@ -48,14 +37,19 @@ class messageData  {
             });
         }
 
-    
+        if(!validate.messageValidation(message)) {
+            return res.send({
+                status: 400,
+                message: 'Please enter your message'
+            });
+        }
 
           const newPost = new Messages ({
             id: uuid.v4(),
-            createdOn: Date.now().toString(),
-            subject: subject,
-            message: message,
-            status: status,
+            createdOn: new Date().toDateString(),
+            subject: subject.trim(),
+            message: message.trim(),
+            status: "sent",
             parentMessageId: uuid.v4(),
             senderId: uuid.v4(),
             receiverId: uuid.v4(),
@@ -79,7 +73,7 @@ class messageData  {
          const unRead = epicMessages.filter( unreadVal => unreadVal.status === 'unread');
          if(!unRead.length){
             unreadMessages={
-                status: 200,
+                status: 404,
                 message: 'No unread message found'
             };
          }else{
@@ -97,7 +91,7 @@ class messageData  {
         const unRead = epicMessages.filter( sentVal => sentVal.status === 'sent');
         if(!unRead.length){
            sentMessages={
-               status: 200,
+               status: 404,
                message: 'No sent message found'
            };
         }else{
@@ -116,7 +110,7 @@ class messageData  {
          const result = epicMessages.find( byId => byId.id === id);
          if(!result){
             byIdMessages = {
-                status: 200,
+                status: 404,
                 message: 'No Message found with such ID'
             }
          } else {
@@ -142,7 +136,7 @@ class messageData  {
         epicMessages.splice(delety,1);
         if(!result){
            deleteMessages = {
-               status: 200,
+               status: 404,
                message: 'No Message found with such ID'
            }
         } else {

@@ -1,0 +1,182 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Epic Mail API Documentation",
+      "description": "Swagger documentation of an app hosted on heroku",
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+      "/messages": {
+        "post": {
+          "tags": ["messages"],
+          "description": "Create or send a new email message",
+          "parameters": [
+            {
+              "name": "message",
+              "in": "body",
+              "description": "Email message creation",
+              "schema": {
+                "$ref": "#/definitions/messages"
+              }
+            }
+          ],
+          "produces": ["application/json"],
+          "responses": {
+            "201": {
+              "description": "New Email message is created",
+              "schema": {
+                "$ref": "#/definitions/messages"
+              }
+            }
+          }
+        },
+        "get": {
+          "summary": "Get all Epic Messages",
+          "tags": ["messages"],
+          "responses": {
+            "200": {
+              "description": "Messages Retrieved",
+              "schema": {
+                "$ref": "#/definitions/messages"
+              }
+            }
+          }
+        }
+      },
+      "/messages/{id}": {
+        
+        "get": {
+          "tags": ["messages"],
+          "summary": "Get message with a specific ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "UUID of a message",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "message is found",
+              "schema": {
+                "$ref": "#/definitions/messages"
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete message with a specific ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "UUID of a message",
+              "type": "string"
+            }
+          ],
+          "tags": ["messages"],
+          "responses": {
+            "200": {
+              "description": "message is deleted",
+              "schema": {
+                "$ref": "#/definitions/messages"
+              }
+            }
+          }
+        }
+        
+      },
+
+      "/messages/{unread}": {
+        "get": {
+            "tags":["messages"],
+            "summary":"Get all unread messages",
+            "parameters":[{
+                "name": "unread",
+                "in":"path",
+                "required":true,
+                "description": "Write in 'unread'",
+                "type":"string"
+            }
+        ],
+        "responses":{
+            "200": {
+                "description": "Unread Messages",
+                "schema": {
+                    "$ref":"#/definitions/messages"
+                }
+            }
+        }
+        }
+
+    },
+    "/messages/{sent}": {
+        "get": {
+            "tags":["messages"],
+            "summary":"Get all sent messages",
+            "parameters":[{
+                "name": "sent",
+                "in":"path",
+                "required":true,
+                "description": "Write in 'sent'",
+                "type":"string"
+            }
+        ],
+        "responses":{
+            "200": {
+                "description": "Sent Messages",
+                "schema": {
+                    "$ref":"#/definitions/messages"
+                }
+            }
+        }
+        }
+
+    }
+    },
+    "definitions": {
+        "messages": {
+            "required": [
+                "subject",
+                "message",
+                "receiverEmail"
+            ],
+            "properties": {
+                "subject": {
+                    "type": "string",
+                    "uniqueItems": "true",
+                    "example": "Hey"
+                },
+                "message": {
+                  "type": "string",
+                  "uniqueItems": "true",
+                  "example": "Hey I miss you"
+                },
+                "status": {
+                  "type": "string",
+                  "uniqueItems": "true",
+                  "status": "sent"
+                },
+                "receiverEmail": {
+                  "type": "string",
+                  "uniqueItems": "true",
+                  "example":"mecfrank16@gmail.com"
+                }
+            }
+        }
+  
+        
+    }
+  }
