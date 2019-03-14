@@ -15,10 +15,10 @@ router.get('/api/v1/messages', epicControllers.getAllMessages);
 router.post('/api/v1/messages',epicControllers.postMessage);
 
 // Get all unread Messages
-router.get('/api/v1/messages/Unread', epicControllers.getUnreadMessages);
+router.get('/api/v1/messages/unread', epicControllers.getUnreadMessages);
 
 // Get all sent Messages
-router.get('/api/v1/messages/Sent', epicControllers.getSentMessages);
+router.get('/api/v1/messages/sent', epicControllers.getSentMessages);
 
 // Get Message by Id
 router.get('/api/v1/messages/:id', epicControllers.getByMessageId);

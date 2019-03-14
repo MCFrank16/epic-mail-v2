@@ -10,13 +10,13 @@ describe('Delete Messages by ID', (done) => {
     let id;
     beforeEach((done) => {
         chai.request(server)
-        .post('/api/v1/Messages')
+        .post('/api/v1/messages')
         .send({
          subject: 'Hey There',
          message: 'Hey I miss you',
-         status: 'Read',
          receiverEmail: 'Mecfrank@yahoo.fr'
 })
+
         .end((err,res) => {
             id = res.body.data.id;
             done();

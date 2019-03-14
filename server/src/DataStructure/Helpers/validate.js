@@ -6,14 +6,14 @@ class Validate {
       return emailPattern.test(email) && email;
     }
 
-    static stringValidation (message) {
+    static messageValidation (message) {
       let stringPattern = /^.{1,250}$/;
   
       return stringPattern.test(message);
     }
 
     static subjectValidation (subject) {
-      let stringPattern = /^.{1,10}$/;
+      let stringPattern = /^.{1,15}$/;
   
       return stringPattern.test(subject);
     }

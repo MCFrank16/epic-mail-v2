@@ -1,8 +1,14 @@
 import express from 'express';
 import routes from '../src/DataStructure/Routers/route'
+import swaggerUI from 'swagger-ui-express';
+import swaggerDocument from '../src/Docs/ApiSwagger.json';
 
 const app = express();
 
+
+
+
+app.use('/api-docs/', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
