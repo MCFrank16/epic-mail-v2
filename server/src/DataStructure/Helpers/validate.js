@@ -9,13 +9,13 @@ class Validate {
     static messageValidation (message) {
       let stringPattern = /^.{1,250}$/;
   
-      return stringPattern.test(message);
+      return stringPattern.test(message.trim());
     }
 
     static subjectValidation (subject) {
       let stringPattern = /^.{1,15}$/;
   
-      return stringPattern.test(subject);
+      return stringPattern.test(subject.trim());
     }
 }
 
