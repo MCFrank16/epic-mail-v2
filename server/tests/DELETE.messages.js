@@ -78,6 +78,6 @@ describe('Delete Messages by ID', (done) => {
              }
              done();
          })
-     })
+     });
 
 })

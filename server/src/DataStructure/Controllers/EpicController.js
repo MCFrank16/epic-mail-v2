@@ -19,10 +19,6 @@ class MessageData  {
 
         const { message, subject, receiverEmail, status } = req.body;
 
-       
-
-        
-
         if(!validate.emailValidation(receiverEmail)){
             return res.send({
                 status: 400,
@@ -32,7 +28,7 @@ class MessageData  {
 
         if(!validate.subjectValidation(subject)) {
             return res.send({
-                statu: 400,
+                status: 400,
                 message: 'Please enter the subject'
             });
         }
