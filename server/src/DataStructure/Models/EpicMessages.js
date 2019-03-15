@@ -1,6 +1,9 @@
-const epicMessages = [];
+import dataBase from '../Models/Database';
+
+const db = new dataBase();
 class Messages {
-    constructor({id
+    constructor({ 
+        id
         ,createdOn
         ,subject
         ,message
@@ -9,7 +12,7 @@ class Messages {
         ,senderId
         ,receiverId
         ,receiverEmail
-    } = {}){
+    }){
         this.id = id;
         this.createdOn = createdOn;
         this.subject = subject;
@@ -21,4 +24,4 @@ class Messages {
         this.receiverEmail = receiverEmail;
     }
 }
- export { epicMessages, Messages };
+ export { Messages, db };

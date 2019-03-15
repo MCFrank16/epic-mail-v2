@@ -1,12 +1,12 @@
 import uuid from 'uuid';
-import { epicMessages,Messages} from '../Models/EpicMessages';
+import { Messages, db } from '../Models/EpicMessages';
 import validate from '../Helpers/validate';
 
-class messageData  {
+class MessageData  {
     
     // get all the messages
    static getAllMessages(req,res) {
-        const allMessages = epicMessages;
+        const allMessages = db.epicMessages;
         res.send({
             status: 200,
             data: allMessages
@@ -53,11 +53,12 @@ class messageData  {
             parentMessageId: uuid.v4(),
             senderId: uuid.v4(),
             receiverId: uuid.v4(),
-            receiverEmail: receiverEmail
-
+            receiverEmail
           });
 
-          epicMessages.push(newPost);
+          db.addMessage(newPost);
+
+         // epicMessages.push(newPost);
           return res.send({
               status: 201,
               data: newPost
@@ -65,30 +66,28 @@ class messageData  {
       }
     
       static getUnreadMessages(req,res) {
-         let unreadVal = new Messages();
          let unreadMessages={
              status: 200,
              data: []
          };
-         const unRead = epicMessages.filter( unreadVal => unreadVal.status === 'unread');
+         const unRead = db.getUnread(req.params);
          if(!unRead.length){
             unreadMessages={
                 status: 404,
                 message: 'No unread message found'
             };
-         }else{
+         }else {
             unreadMessages.data = unRead;
          }
          return res.send(unreadMessages)
       }
 
       static getSentMessages(req,res) {
-        let sentVal = new Messages();
         let sentMessages={
             status: 200,
             data: []
         };
-        const unRead = epicMessages.filter( sentVal => sentVal.status === 'sent');
+        const unRead = db.getSent(req.params);
         if(!unRead.length){
            sentMessages={
                status: 404,
@@ -101,13 +100,12 @@ class messageData  {
      }
 
      static getByMessageId(req,res){
-         let byId = new Messages();
          const { id } = req.params;
          let byIdMessages = {
              status: 200,
              data: {}
          }
-         const result = epicMessages.find( byId => byId.id === id);
+         const result = db.getById(id);
          if(!result){
             byIdMessages = {
                 status: 404,
@@ -125,15 +123,12 @@ class messageData  {
 
      
      static deleteMessageById(req,res){
-        let deleteval = new Messages();
         const { id } = req.params;
         let deleteMessages = {
             status: 200,
             data: {}
         }
-        const result = epicMessages.find( deleteval => deleteval.id === id);
-        const delety = epicMessages.indexOf(result);
-        epicMessages.splice(delety,1);
+        const result = db.deleteById(id);
         if(!result){
            deleteMessages = {
                status: 404,
@@ -153,4 +148,4 @@ class messageData  {
 
 
 
-export default messageData;
+export default MessageData;
