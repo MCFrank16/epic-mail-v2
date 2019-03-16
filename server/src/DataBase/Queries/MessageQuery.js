@@ -1,0 +1,35 @@
+const messagesTable = `
+   CREATE TABLE IF NOT EXISTS
+     Messages (
+        id UUID PRIMARY KEY,
+        createdOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        subject VARCHAR(255) NOT NULL,
+        message VARCHAR(255) NOT NULL,
+        status  VARCHAR(255) NOT NULL,
+        receiverEmail VARCHAR(255) NOT NULL,
+        parentMessageId UUID NOT NULL,
+        senderId UUID NOT NULL,
+        receiverId UUID NOT NULL
+
+
+     )`;
+
+const saveMessage = ` INSERT INTO Messages(
+   id,
+   createdOn,
+   subject,
+   message,
+   status,
+   receiverEmail,
+   parentMessageId,
+   senderId,
+   receiverId
+) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) ON CONFLICT DO NOTHING returning *`;
+
+const dropTableMessages = 'DROP TABLE IF EXISTS Messages';
+
+export default {
+  messagesTable,
+  saveMessage,
+  dropTableMessages,
+};

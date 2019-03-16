@@ -1,27 +1,27 @@
-import dataBase from '../Models/Database';
+import dataBase from './Database';
 
 const db = new dataBase();
 class Messages {
-    constructor({ 
-        id
-        ,createdOn
-        ,subject
-        ,message
-        ,status
-        ,parentMessageId
-        ,senderId
-        ,receiverId
-        ,receiverEmail
-    }){
-        this.id = id;
-        this.createdOn = createdOn;
-        this.subject = subject;
-        this.message = message;
-        this.status = status;
-        this.parentMessageId = parentMessageId;
-        this.senderId = senderId;
-        this.receiverId = receiverId;
-        this.receiverEmail = receiverEmail;
-    }
+  constructor({
+    id,
+    createdOn,
+    subject,
+    message,
+    status,
+    parentMessageId,
+    senderId,
+    receiverId,
+    receiverEmail,
+  }) {
+    this.id = id;
+    this.createdOn = createdOn;
+    this.subject = subject;
+    this.message = message;
+    this.status = status;
+    this.parentMessageId = parentMessageId;
+    this.senderId = senderId;
+    this.receiverId = receiverId;
+    this.receiverEmail = receiverEmail;
+  }
 }
- export { Messages, db };
+export { Messages, db };
