@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import uuid from 'chai-uuid';
-import server from '../src/server';
+import server from '../../src/server';
 
 const {should} = chai;
 const {expect} = chai;

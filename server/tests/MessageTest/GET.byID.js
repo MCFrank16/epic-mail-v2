@@ -1,17 +1,17 @@
+/* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import uuid from 'chai-uuid';
-import server from '../src/server';
-import { Messages } from '../src/DataStructure/Models/EpicMessages';
 import date from 'chai-datetime';
+import server from '../../src/server';
+import { Messages } from '../../src/DataBase/Models/EpicMessages';
 
-const {should} = chai;
-const {expect} = chai;
+const { should } = chai;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 chai.use(uuid);
 chai.use(date);
-
 
 describe('GET a message by its specific ID', (done) => {
   let id;
