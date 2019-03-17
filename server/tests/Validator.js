@@ -1,12 +1,14 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-undef */
 import chai from 'chai';
+import chaiHttp from 'chai-http';
 import server from '../src/server';
 import validators from '../src/DataBase/Helpers/validate';
 
 const { expect } = chai;
+chai.use(chaiHttp);
 
-describe.only('It should test the validator class', () => {
+describe('It should test the validator class', () => {
   it('should ask a user to enter a subject', (done) => {
     chai.request(server)
       .post('/api/v1/messages')
