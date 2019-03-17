@@ -1,19 +1,19 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import uuid from 'chai-uuid';
-import server from '../src/server';
-import { Messages } from '../src/DataStructure/Models/EpicMessages';
 import date from 'chai-datetime';
+import server from '../../src/server';
 
-const {should} = chai;
-const {expect} = chai;
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 chai.use(uuid);
 chai.use(date);
 
-
-describe('GET a message by its specific ID', (done) => {
+describe('GET a message by its specific ID', () => {
   let id;
   beforeEach((done) => {
     chai.request(server)
@@ -25,6 +25,7 @@ describe('GET a message by its specific ID', (done) => {
         receiverEmail: 'Mecfrank@yahoo.fr',
       })
       .end((err, res) => {
+        // eslint-disable-next-line prefer-destructuring
         id = res.body.data.id;
         done();
       });
@@ -53,25 +54,24 @@ describe('GET a message by its specific ID', (done) => {
       .get(`/api/v1/Messages/${id}`)
 
       .end((err, res) => {
-        if (id) {
-          expect(res.body.data).to.have.property('id').to.be.a.uuid('v4');
-          expect(res.body.data).to.have.property('createdOn').to.be.a('string');
-          expect(res.body.data).to.have.property('subject').to.be.a('string');
-          expect(res.body.data).to.have.property('message').to.be.a('string');
-          expect(res.body.data).to.have.property('status').to.be.a('string');
-          expect(res.body.data).to.have.property('parentMessageId').to.be.a.uuid('v4');
-          expect(res.body.data).to.have.property('senderId').to.be.a.uuid('v4');
-          expect(res.body.data).to.have.property('receiverId').to.be.a.uuid('v4');
-          expect(res.body.data).to.have.property('receiverEmail').to.be.a('string');
-        }
+        expect(res.body.data).to.have.property('id').to.be.a.uuid('v4');
+        expect(res.body.data).to.have.property('createdOn').to.be.a('string');
+        expect(res.body.data).to.have.property('subject').to.be.a('string');
+        expect(res.body.data).to.have.property('message').to.be.a('string');
+        expect(res.body.data).to.have.property('status').to.be.a('string');
+        expect(res.body.data).to.have.property('parentMessageId').to.be.a.uuid('v4');
+        expect(res.body.data).to.have.property('senderId').to.be.a.uuid('v4');
+        expect(res.body.data).to.have.property('receiverId').to.be.a.uuid('v4');
+        expect(res.body.data).to.have.property('receiverEmail').to.be.a('string');
+
         done();
       });
   });
 
   it('should send no Message found', (done) => {
-    const id = 1;
+    const idi = 1;
     chai.request(server)
-      .get(`/api/v1/Messages/${id}`)
+      .get(`/api/v1/Messages/${idi}`)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.have.property('message').eql('No Message found with such ID');

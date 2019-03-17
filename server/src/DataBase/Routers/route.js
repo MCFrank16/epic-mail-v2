@@ -4,15 +4,15 @@ import epicControllers from '../Controllers/EpicController';
 
 const router = express.Router();
 
-//Home Endpoint route
+// Home Endpoint route
 router.get('/api/v1', (req, res) => {
-    res.send({ message: 'Welcome to Epic Mail Service API EndPoint' });
+  res.send({ message: 'Welcome to Epic Mail Service API EndPoint' });
 });
-//get all Epic Messages Endpoint
+// get all Epic Messages Endpoint
 router.get('/api/v1/messages', epicControllers.getAllMessages);
 
 // POST/create/send a message
-router.post('/api/v1/messages',epicControllers.postMessage);
+router.post('/api/v1/messages', epicControllers.postMessage);
 
 // Get all unread Messages
 router.get('/api/v1/messages/unread', epicControllers.getUnreadMessages);

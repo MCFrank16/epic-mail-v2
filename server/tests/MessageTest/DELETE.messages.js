@@ -1,13 +1,16 @@
+/* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import uuid from 'chai-uuid';
-import server from '../src/server';
+import server from '../../src/server';
 
-const {should} = chai;
-const {expect} = chai;
+const { expect } = chai;
 
-describe('Delete Messages by ID', (done) => {
+chai.use(chaiHttp);
+
+// eslint-disable-next-line no-undef
+describe('Delete Messages by ID', () => {
   let id;
+  // eslint-disable-next-line no-undef
   beforeEach((done) => {
     chai.request(server)
       .post('/api/v1/messages')
@@ -18,11 +21,13 @@ describe('Delete Messages by ID', (done) => {
       })
 
       .end((err, res) => {
+        // eslint-disable-next-line prefer-destructuring
         id = res.body.data.id;
         done();
       });
   });
 
+  // eslint-disable-next-line no-undef
   it('should return a status code of 200', (done) => {
     chai.request(server)
       .get(`/api/v1/Messages/${id}`)
@@ -45,7 +50,7 @@ describe('Delete Messages by ID', (done) => {
     chai.request(server)
       .get(`/api/v1/Messages/${id}`)
 
-      .end((err, res) => {
+      .end(() => {
         expect(id).to.be.a.uuid('v4');
         done();
       });
