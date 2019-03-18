@@ -6,8 +6,8 @@ class UserController {
   static async registerUser(req, res) {
     const newUser = Users.createUser(req.body);
     const token = Auth.generateToken(req.body.id);
-    newUser.then((user) => {
-      if (!user) {
+    newUser.then((done) => {
+      if (!done) {
         return res.send({
           status: 400,
           message: 'The user already exists',
@@ -17,7 +17,7 @@ class UserController {
         status: 201,
         data: [{
           token,
-          user,
+          done,
         }],
       });
     });
