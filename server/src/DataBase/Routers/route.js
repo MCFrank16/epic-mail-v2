@@ -30,4 +30,7 @@ router.delete('/api/v1/messages/:id', epicControllers.deleteMessageById);
 // create a user account
 router.post('/api/v1/auth/signup', UserController.registerUser);
 
+// login a user
+router.post('/api/v1/auth/login', UserController.loginUser);
+
 export default router;
