@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 5000 server/tests/**/**/*.js --exit",
     "start": "nodemon --exec babel-node server/src/server.js",
-    "db": "babel-node server/src/DataBase/db.js --",
+    "db": "babel-node server/src/DataBase/DB/db.js",
     "build": "babel server/src --out server/dist",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "serve": "node server/dist/server.js"
