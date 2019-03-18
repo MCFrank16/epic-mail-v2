@@ -1,5 +1,6 @@
 import express from 'express';
 import epicControllers from '../Controllers/EpicController';
+import UserController from '../Controllers/UserController/CreateUser';
 
 
 const router = express.Router();
@@ -25,5 +26,8 @@ router.get('/api/v1/messages/:id', epicControllers.getByMessageId);
 
 // Delete Message by Id
 router.delete('/api/v1/messages/:id', epicControllers.deleteMessageById);
+
+// create a user account
+router.post('/api/v1/auth/signup', UserController.registerUser);
 
 export default router;

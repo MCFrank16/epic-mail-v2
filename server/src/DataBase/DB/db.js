@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
-import messageQuery from '../Queries/MessageQuery';
-import UsersQuery from '../Queries/UsersQuery';
+import messageQuery from './Queries/MessageQuery';
+import UsersQuery from './Queries/UsersQuery';
 
 dotenv.config();
 
