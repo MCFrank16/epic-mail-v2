@@ -83,6 +83,26 @@ class MessageData {
       });
     }
   }
+
+  static async getMessageById(req, res) {
+    const queryText = MessageQuery.getById;
+    const values = [req.params.id];
+    try {
+      const { rows } = await Pool.query(queryText, values);
+      if (!rows) {
+        return res.send({
+          status: 404,
+          message: 'Message not found',
+        });
+      }
+      return res.send({
+        status: 200,
+        data: rows[0],
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 

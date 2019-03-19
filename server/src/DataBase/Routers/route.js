@@ -22,7 +22,7 @@ router.post('/api/v1/messages', epicControllers.postMessage);
 // router.get('/api/v1/messages/sent', epicControllers.getSentMessages);
 
 // // Get Message by Id
-// router.get('/api/v1/messages/:id', epicControllers.getByMessageId);
+router.get('/api/v1/messages/:id', epicControllers.getMessageById);
 
 // // Delete Message by Id
 // router.delete('/api/v1/messages/:id', epicControllers.deleteMessageById);
