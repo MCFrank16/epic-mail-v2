@@ -10,7 +10,7 @@ router.get('/api/v1', (req, res) => {
   res.send({ message: 'Welcome to Epic Mail Service API EndPoint' });
 });
 // get all Epic Messages Endpoint
-// router.get('/api/v1/messages', epicControllers.getAllMessages);
+router.get('/api/v1/messages', epicControllers.getAllMessages);
 
 // POST/create/send a message
 router.post('/api/v1/messages', epicControllers.postMessage);
