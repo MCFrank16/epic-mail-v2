@@ -27,6 +27,7 @@ const saveMessage = ` INSERT INTO Messages(
 ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) ON CONFLICT DO NOTHING returning *`;
 
 const getAllMessages = ' SELECT * FROM Messages';
+const getById = ' SELECT * FROM Messages WHERE id = $1';
 
 const dropTableMessages = 'DROP TABLE IF EXISTS Messages';
 
@@ -35,4 +36,5 @@ export default {
   saveMessage,
   dropTableMessages,
   getAllMessages,
+  getById,
 };
