@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import uuid from 'uuid';
+import moment from 'moment';
 import Pool from '../DB/QueryExecutor';
 import Auth from '../Helpers/validate';
 import UsersQuery from '../DB/Queries/UsersQuery';
@@ -14,8 +15,8 @@ class User {
       dataBody.lastname,
       dataBody.email,
       password,
-      new Date().toDateString(),
-      new Date().toDateString(),
+      moment(new Date()),
+      moment(new Date()),
       dataBody.isAdmin,
       dataBody.Phone,
     ];

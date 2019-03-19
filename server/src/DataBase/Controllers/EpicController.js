@@ -1,22 +1,22 @@
 import uuid from 'uuid';
-// import { Messages, db } from '../Models/EpicMessages';
+import moment from 'moment';
 import validate from '../Helpers/validate';
+import MessageQuery from '../DB/Queries/MessageQuery';
+import Pool from '../DB/QueryExecutor';
 
 class MessageData {
-  // get all the messages
-  static getAllMessages(req, res) {
-    const allMessages = db.epicMessages;
-    res.send({
-      status: 200,
-      data: allMessages,
-    });
-  }
-
   // post/ create a message
-  static postMessage(req, res) {
+  static async postMessage(req, res) {
     const {
-      message, subject, receiverEmail, status,
+      message, subject, receiverEmail,
     } = req.body;
+
+    if (!message || !subject || !receiverEmail) {
+      return res.send({
+        status: 400,
+        message: 'Please fill in all the requirements',
+      });
+    }
 
     if (!validate.emailValidation(receiverEmail)) {
       return res.send({
@@ -39,102 +39,31 @@ class MessageData {
       });
     }
 
-    const newPost = new Messages({
-      id: uuid.v4(),
-      createdOn: new Date().toDateString(),
-      subject: subject.trim(),
-      message: message.trim(),
-      status: 'sent',
-      parentMessageId: uuid.v4(),
-      senderId: uuid.v4(),
-      receiverId: uuid.v4(),
+    const queryText = MessageQuery.saveMessage;
+    const values = [
+      uuid.v4(),
+      moment(new Date()),
+      subject,
+      message,
+      'sent',
       receiverEmail,
-    });
+      uuid.v4(),
+      uuid.v4(),
+      uuid.v4(),
+    ];
 
-    db.addMessage(newPost);
-
-    // epicMessages.push(newPost);
-    return res.send({
-      status: 201,
-      data: newPost,
-    });
-  }
-
-  static getUnreadMessages(req, res) {
-    let unreadMessages = {
-      status: 200,
-      data: [],
-    };
-    const unRead = db.getUnread(req.params);
-    if (!unRead.length) {
-      unreadMessages = {
-        status: 404,
-        message: 'No unread message found',
-      };
-    } else {
-      unreadMessages.data = unRead;
+    try {
+      const { rows } = await Pool.query(queryText, values);
+      return res.send({
+        status: 201,
+        data: rows[0],
+      });
+    } catch (error) {
+      return res.send({
+        status: 400,
+        message: error,
+      });
     }
-    return res.send(unreadMessages);
-  }
-
-  static getSentMessages(req, res) {
-    let sentMessages = {
-      status: 200,
-      data: [],
-    };
-    const unRead = db.getSent(req.params);
-    if (!unRead.length) {
-      sentMessages = {
-        status: 404,
-        message: 'No sent message found',
-      };
-    } else {
-      sentMessages.data = unRead;
-    }
-    return res.send(sentMessages);
-  }
-
-  static getByMessageId(req, res) {
-    const { id } = req.params;
-    let byIdMessages = {
-      status: 200,
-      data: {},
-    };
-    const result = db.getById(id);
-    if (!result) {
-      byIdMessages = {
-        status: 404,
-        message: 'No Message found with such ID',
-      };
-    } else {
-      byIdMessages = {
-        status: 200,
-        data: result,
-      };
-    }
-    return res.send(byIdMessages);
-  }
-
-
-  static deleteMessageById(req, res) {
-    const { id } = req.params;
-    let deleteMessages = {
-      status: 200,
-      data: {},
-    };
-    const result = db.deleteById(id);
-    if (!result) {
-      deleteMessages = {
-        status: 404,
-        message: 'No Message found with such ID',
-      };
-    } else {
-      deleteMessages = {
-        status: 200,
-        message: 'Message Deleted',
-      };
-    }
-    return res.send(deleteMessages);
   }
 }
 

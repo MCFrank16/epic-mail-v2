@@ -1,7 +1,7 @@
-import Auth from '../../Helpers/validate';
-import Users from '../../Models/UserModel';
-import queries from '../../DB/Queries/UsersQuery';
-import Pool from '../../DB/QueryExecutor';
+import Auth from '../Helpers/validate';
+import Users from '../Models/UserModel';
+import queries from '../DB/Queries/UsersQuery';
+import Pool from '../DB/QueryExecutor';
 
 class UserController {
   static async registerUser(req, res) {
