@@ -65,6 +65,24 @@ class MessageData {
       });
     }
   }
+
+  static async getAllMessages(req, res) {
+    const all = MessageQuery.getAllMessages;
+
+    try {
+      const { rows, rowCount } = await Pool.query(all);
+      return res.send({
+        status: 201,
+        data: rows,
+        rowCount,
+      });
+    } catch (error) {
+      return res.send({
+        status: 400,
+        message: error,
+      });
+    }
+  }
 }
 
 
