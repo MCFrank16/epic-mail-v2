@@ -100,7 +100,34 @@ class MessageData {
         data: rows[0],
       });
     } catch (error) {
-      return error;
+      return res.send({
+        status: 400,
+        message: error,
+      });
+    }
+  }
+
+  static async deleteById(req, res) {
+    const queryText = MessageQuery.deleteById;
+    const values = [req.params.id];
+
+    try {
+      const { rows } = await Pool.query(queryText, values);
+      if (!rows[0]) {
+        return res.send({
+          status: 404,
+          message: 'Message Not Found',
+        });
+      }
+      return res.send({
+        status: 200,
+        message: 'Message Deleted',
+      });
+    } catch (error) {
+      return res.send({
+        status: 404,
+        message: error,
+      });
     }
   }
 }
