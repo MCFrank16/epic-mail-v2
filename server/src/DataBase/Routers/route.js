@@ -25,7 +25,7 @@ router.post('/api/v1/messages', epicControllers.postMessage);
 router.get('/api/v1/messages/:id', epicControllers.getMessageById);
 
 // // Delete Message by Id
-// router.delete('/api/v1/messages/:id', epicControllers.deleteMessageById);
+router.delete('/api/v1/messages/:id', epicControllers.deleteById);
 
 // create a user account
 router.post('/api/v1/auth/signup', UserController.registerUser);
