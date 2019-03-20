@@ -70,7 +70,7 @@ class MessageData {
     const all = MessageQuery.getAllMessages;
 
     try {
-      const { rows, rowCount } = await Pool.query(all);
+      const { rows, rowCount } = await Pool.query(all, [req.user.id]);
       return res.send({
         status: 201,
         data: rows,
@@ -86,7 +86,7 @@ class MessageData {
 
   static async getMessageById(req, res) {
     const queryText = MessageQuery.getById;
-    const values = [req.params.id];
+    const values = [req.params.id, req.user.id];
     try {
       const { rows } = await Pool.query(queryText, values);
       if (!rows) {
@@ -109,7 +109,7 @@ class MessageData {
 
   static async deleteById(req, res) {
     const queryText = MessageQuery.deleteById;
-    const values = [req.params.id];
+    const values = [req.params.id, req.user.id];
 
     try {
       const { rows } = await Pool.query(queryText, values);
