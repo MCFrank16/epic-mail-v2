@@ -71,6 +71,7 @@ class MessageData {
 
     try {
       const { rows, rowCount } = await Pool.query(all, [req.user.id]);
+      console.log(req.user.id);
       return res.send({
         status: 201,
         data: rows,
@@ -132,8 +133,9 @@ class MessageData {
   }
 
   static async getUnreadMessages(req, res) {
+    const { user } = req.user.id;
     const queryText = MessageQuery.getUnread;
-    const values = ['unread'];
+    const values = [user, 'unread'];
 
     try {
       const { rows } = await Pool.query(queryText, values);
@@ -156,8 +158,9 @@ class MessageData {
   }
 
   static async getSentMessages(req, res) {
+    const user = req.user.id;
     const queryText = MessageQuery.getSent;
-    const values = ['sent'];
+    const values = [user, 'sent'];
 
     try {
       const { rows } = await Pool.query(queryText, values);
