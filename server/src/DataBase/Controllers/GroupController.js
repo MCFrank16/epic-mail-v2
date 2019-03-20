@@ -73,6 +73,40 @@ class GroupMessage {
     }
   }
 
+  static async updateGroupName(req, res) {
+    const findOne = GroupQuery.getAgroupById;
+    const updateOne = GroupQuery.updateAgroup;
+    const values = [req.params.id, req.user.id];
+
+    try {
+      const { rows } = await Pool.query(findOne, values);
+      if (!rows[0]) {
+        return res.status(404).send({
+          status: 404,
+          message: 'Group not found',
+        });
+      }
+
+      const valuez = [
+        req.body.name,
+        req.user.id,
+      ];
+
+      const answer = await Pool.query(updateOne, valuez);
+
+      return res.status(200).send({
+        status: 200,
+        data: answer.rows[0],
+      });
+    } catch (err) {
+      res.status(400).send({
+        status: 400,
+        message: err,
+      });
+    }
+  }
+
+
   //   static async getMessageById(req, res) {
   //     const queryText = MessageQuery.getById;
   //     const values = [req.params.id, req.user.id];
@@ -96,29 +130,29 @@ class GroupMessage {
   //     }
   //   }
 
-  //   static async deleteById(req, res) {
-  //     const queryText = MessageQuery.deleteById;
-  //     const values = [req.params.id, req.user.id];
+  static async deleteGroup(req, res) {
+    const queryText = GroupQuery.deleteGroup;
+    const values = [req.params.id, req.user.id];
 
-  //     try {
-  //       const { rows } = await Pool.query(queryText, values);
-  //       if (!rows[0]) {
-  //         return res.send({
-  //           status: 404,
-  //           message: 'Message Not Found',
-  //         });
-  //       }
-  //       return res.send({
-  //         status: 200,
-  //         message: 'Message Deleted',
-  //       });
-  //     } catch (error) {
-  //       return res.send({
-  //         status: 404,
-  //         message: error,
-  //       });
-  //     }
-  //   }
+    try {
+      const { rows } = await Pool.query(queryText, values);
+      if (!rows[0]) {
+        return res.status(404).send({
+          status: 404,
+          message: 'Group Not Found',
+        });
+      }
+      return res.status(200).send({
+        status: 200,
+        message: 'Group Deleted',
+      });
+    } catch (error) {
+      return res.status(404).send({
+        status: 404,
+        message: error,
+      });
+    }
+  }
 
   //   static async getUnreadMessages(req, res) {
   //     const queryText = MessageQuery.getUnread;

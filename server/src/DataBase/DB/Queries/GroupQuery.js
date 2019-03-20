@@ -19,10 +19,16 @@ GroupMessage (
 ) VALUES ($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING returning *`;
 
 const getAllGroupMessage = ' SELECT * FROM GroupMessage WHERE ownerId = $1';
+const getAgroupById = ' SELECT * FROM GroupMessage WHERE ownerId = $1';
+const updateAgroup = ' UPDATE GroupMessage SET name = $1 WHERE id = $2 AND ownerId = $3';
+const deleteGroup = ' DELETE FROM GroupMessage WHERE id = $1 AND ownerId = $2 returning *';
 
 
 export default {
   GroupMessage,
   createGroupMessage,
   getAllGroupMessage,
+  getAgroupById,
+  updateAgroup,
+  deleteGroup,
 };

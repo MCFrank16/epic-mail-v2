@@ -12,28 +12,28 @@ class MessageData {
     } = req.body;
 
     if (!message || !subject || !receiverEmail) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: 'Please fill in all the requirements',
       });
     }
 
     if (!validate.emailValidation(receiverEmail)) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: 'Please enter a valid Email',
       });
     }
 
     if (!validate.subjectValidation(subject)) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: 'Please enter the subject',
       });
     }
 
     if (!validate.messageValidation(message)) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: 'Please enter your message',
       });
@@ -54,12 +54,12 @@ class MessageData {
 
     try {
       const { rows } = await Pool.query(queryText, values);
-      return res.send({
+      return res.status(201).send({
         status: 201,
         data: rows[0],
       });
     } catch (error) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: error,
       });
@@ -71,14 +71,13 @@ class MessageData {
 
     try {
       const { rows, rowCount } = await Pool.query(all, [req.user.id]);
-      console.log(req.user.id);
-      return res.send({
-        status: 201,
+      return res.status(200).send({
+        status: 200,
         data: rows,
         rowCount,
       });
     } catch (error) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: error,
       });
@@ -91,17 +90,17 @@ class MessageData {
     try {
       const { rows } = await Pool.query(queryText, values);
       if (!rows) {
-        return res.send({
+        return res.status(404).send({
           status: 404,
           message: 'Message not found',
         });
       }
-      return res.send({
+      return res.status(200).send({
         status: 200,
         data: rows[0],
       });
     } catch (error) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: error,
       });
@@ -115,43 +114,43 @@ class MessageData {
     try {
       const { rows } = await Pool.query(queryText, values);
       if (!rows[0]) {
-        return res.send({
+        return res.status(404).send({
           status: 404,
           message: 'Message Not Found',
         });
       }
-      return res.send({
+      return res.status(200).send({
         status: 200,
         message: 'Message Deleted',
       });
     } catch (error) {
-      return res.send({
-        status: 404,
+      return res.status(400).send({
+        status: 400,
         message: error,
       });
     }
   }
 
   static async getUnreadMessages(req, res) {
-    const { user } = req.user.id;
+    const user = req.user.id;
     const queryText = MessageQuery.getUnread;
     const values = [user, 'unread'];
 
     try {
       const { rows } = await Pool.query(queryText, values);
       if (!rows[0]) {
-        return res.send({
+        return res.status(404).send({
           status: 404,
           message: 'No unread messages found',
         });
       }
-      return res.send({
+      return res.status(200).send({
         status: 200,
-        data: [rows],
+        data: rows,
       });
     } catch (error) {
-      return res.send({
-        status: 404,
+      return res.status(404).send({
+        status: 400,
         message: error,
       });
     }
@@ -165,18 +164,18 @@ class MessageData {
     try {
       const { rows } = await Pool.query(queryText, values);
       if (!rows[0]) {
-        return res.send({
+        return res.status(404).send({
           status: 404,
           message: 'No sent messages found',
         });
       }
-      return res.send({
+      return res.status(200).send({
         status: 200,
-        data: [rows],
+        data: rows,
       });
     } catch (error) {
-      return res.send({
-        status: 404,
+      return res.status(400).send({
+        status: 400,
         message: error,
       });
     }

@@ -44,4 +44,10 @@ router.post('/api/v1/groups', CheckToken.validateToken, GroupController.postGrou
 // get All group
 router.get('/api/v1/groups', CheckToken.validateToken, GroupController.getAllGroupMessages);
 
+// update a group
+router.patch('/api/v1/groups/:id/name', CheckToken.validateToken, GroupController.updateGroupName);
+
+// delete a group
+router.delete('/api/v1/groups/:id', CheckToken.validateToken, GroupController.deleteGroup);
+
 export default router;
