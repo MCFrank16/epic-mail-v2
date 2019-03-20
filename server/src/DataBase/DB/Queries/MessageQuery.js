@@ -9,9 +9,8 @@ const messagesTable = `
         receiverEmail VARCHAR(255) NOT NULL,
         parentMessageId UUID NOT NULL,
         senderId UUID NOT NULL,
-        receiverId UUID NOT NULL
-
-
+        receiverId UUID NOT NULL,
+        FOREIGN KEY (senderId) REFERENCES users (id) ON DELETE CASCADE
      )`;
 
 const saveMessage = ` INSERT INTO Messages(

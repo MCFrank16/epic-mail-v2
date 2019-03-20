@@ -1,6 +1,10 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import epicControllers from '../Controllers/EpicController';
 import UserController from '../Controllers/UserController';
+import CheckToken from '../Middleware/Validate';
+
+dotenv.config();
 
 
 const router = express.Router();
@@ -13,7 +17,7 @@ router.get('/api/v1', (req, res) => {
 router.get('/api/v1/messages', epicControllers.getAllMessages);
 
 // POST/create/send a message
-router.post('/api/v1/messages', epicControllers.postMessage);
+router.post('/api/v1/messages', CheckToken.validateToken, epicControllers.postMessage);
 
 // // Get all unread Messages
 // router.get('/api/v1/messages/unread', epicControllers.getUnreadMessages);

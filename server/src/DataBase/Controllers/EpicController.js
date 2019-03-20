@@ -48,7 +48,7 @@ class MessageData {
       'sent',
       receiverEmail,
       uuid.v4(),
-      uuid.v4(),
+      req.user.id,
       uuid.v4(),
     ];
 
