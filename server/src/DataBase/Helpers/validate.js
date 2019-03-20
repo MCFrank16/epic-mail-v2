@@ -8,6 +8,7 @@ class Validate {
   static emailValidation(email) {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     // ^[\w.-]+@[\w.-]+[a-zA-Z]{2,4}$
+    // ^[a-zA-Z]+$
     return emailPattern.test(email) && email;
   }
 
@@ -37,6 +38,21 @@ class Validate {
     process.env.SECRET, { expiresIn: '1d' });
 
     return token;
+  }
+
+  static validateName(name) {
+    const namePattern = /^[a-zA-Z]{5,}[a-zA-Z ]*$/;
+    return namePattern.test(name.trim());
+  }
+
+  static validateUserName(name) {
+    const pattern = /^[a-zA-Z]{1,10}[a-zA-Z ]*$/;
+    return pattern.test(name.trim());
+  }
+
+  static validatePhone(number) {
+    const pat = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    return pat.test(number.trim());
   }
 }
 

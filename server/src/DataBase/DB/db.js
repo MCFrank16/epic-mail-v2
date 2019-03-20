@@ -3,6 +3,7 @@ import { Pool } from 'pg';
 import dotenv from 'dotenv';
 import messageQuery from './Queries/MessageQuery';
 import UsersQuery from './Queries/UsersQuery';
+import GroupsQuery from './Queries/GroupQuery';
 
 dotenv.config();
 
@@ -37,9 +38,21 @@ const createTableOfUsers = async () => {
     });
 };
 
+const createTableOfGroups = async () => {
+  const queryText = GroupsQuery.GroupMessage;
+  await pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 (async () => {
   await createTableOfMessages();
   await createTableOfUsers();
+  await createTableOfGroups();
   pool.end();
   console.log('Tables are created');
 })().catch((err) => {

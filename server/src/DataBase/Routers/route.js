@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import epicControllers from '../Controllers/EpicController';
 import UserController from '../Controllers/UserController';
+import GroupController from '../Controllers/GroupController';
 import CheckToken from '../Middleware/Validate';
 
 dotenv.config();
@@ -20,10 +21,10 @@ router.get('/api/v1/messages', CheckToken.validateToken, epicControllers.getAllM
 router.post('/api/v1/messages', CheckToken.validateToken, epicControllers.postMessage);
 
 // // Get all unread Messages
-router.get('/api/v1/messages/unread', epicControllers.getUnreadMessages);
+router.get('/api/v1/messages/unread', CheckToken.validateToken, epicControllers.getUnreadMessages);
 
 // // Get all sent Messages
-router.get('/api/v1/messages/sent', epicControllers.getSentMessages);
+router.get('/api/v1/messages/sent', CheckToken.validateToken, epicControllers.getSentMessages);
 
 // // Get Message by Id
 router.get('/api/v1/messages/:id', CheckToken.validateToken, epicControllers.getMessageById);
@@ -36,5 +37,11 @@ router.post('/api/v1/auth/signup', UserController.registerUser);
 
 // login a user
 router.post('/api/v1/auth/login', UserController.loginUser);
+
+// create a group
+router.post('/api/v1/groups', CheckToken.validateToken, GroupController.postGroup);
+
+// get All group
+router.get('/api/v1/groups', CheckToken.validateToken, GroupController.getAllGroupMessages);
 
 export default router;
