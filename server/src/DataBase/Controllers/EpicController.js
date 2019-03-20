@@ -8,7 +8,7 @@ class MessageData {
   // post/ create a message
   static async postMessage(req, res) {
     const {
-      message, subject, receiverEmail,
+      message, subject, receiverEmail, status,
     } = req.body;
 
     if (!message || !subject || !receiverEmail) {
@@ -45,7 +45,7 @@ class MessageData {
       moment(new Date()),
       subject,
       message,
-      'sent',
+      status,
       receiverEmail,
       uuid.v4(),
       req.user.id,
@@ -122,6 +122,54 @@ class MessageData {
       return res.send({
         status: 200,
         message: 'Message Deleted',
+      });
+    } catch (error) {
+      return res.send({
+        status: 404,
+        message: error,
+      });
+    }
+  }
+
+  static async getUnreadMessages(req, res) {
+    const queryText = MessageQuery.getUnread;
+    const values = ['unread'];
+
+    try {
+      const { rows } = await Pool.query(queryText, values);
+      if (!rows[0]) {
+        return res.send({
+          status: 404,
+          message: 'No unread messages found',
+        });
+      }
+      return res.send({
+        status: 200,
+        data: [rows],
+      });
+    } catch (error) {
+      return res.send({
+        status: 404,
+        message: error,
+      });
+    }
+  }
+
+  static async getSentMessages(req, res) {
+    const queryText = MessageQuery.getSent;
+    const values = ['sent'];
+
+    try {
+      const { rows } = await Pool.query(queryText, values);
+      if (!rows[0]) {
+        return res.send({
+          status: 404,
+          message: 'No sent messages found',
+        });
+      }
+      return res.send({
+        status: 200,
+        data: [rows],
       });
     } catch (error) {
       return res.send({

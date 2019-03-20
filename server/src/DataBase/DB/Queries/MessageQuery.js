@@ -28,6 +28,8 @@ const saveMessage = ` INSERT INTO Messages(
 const getAllMessages = ' SELECT * FROM Messages WHERE senderId = $1';
 const getById = ' SELECT * FROM Messages WHERE id = $1 AND senderId = $2';
 const deleteById = ' DELETE FROM Messages WHERE id = $1 AND senderId = $2 returning *';
+const getUnread = ' SELECT * FROM Messages WHERE status = $1';
+const getSent = ' SELECT * FROM Messages WHERE status = $1';
 
 const dropTableMessages = 'DROP TABLE IF EXISTS Messages';
 
@@ -38,4 +40,6 @@ export default {
   getAllMessages,
   getById,
   deleteById,
+  getUnread,
+  getSent,
 };
