@@ -3,7 +3,9 @@ import dotenv from 'dotenv';
 import epicControllers from '../Controllers/EpicController';
 import UserController from '../Controllers/UserController';
 import GroupController from '../Controllers/GroupController';
+import GroupMember from '../Controllers/GroupMemberController';
 import CheckToken from '../Middleware/Validate';
+// import GroupMemberQuery from '../DB/Queries/GroupMemberQuery';
 
 dotenv.config();
 
@@ -39,15 +41,21 @@ router.post('/api/v1/auth/signup', UserController.registerUser);
 router.post('/api/v1/auth/login', UserController.loginUser);
 
 // create a group
-router.post('/api/v1/groups', CheckToken.validateToken, GroupController.postGroup);
+router.post('/api/v1/groups', CheckToken.validateToken, GroupController.createGroup);
 
 // get All group
-router.get('/api/v1/groups', CheckToken.validateToken, GroupController.getAllGroupMessages);
+router.get('/api/v1/groups', CheckToken.validateToken, GroupController.getAllGroup);
 
 // update a group
 router.patch('/api/v1/groups/:id/name', CheckToken.validateToken, GroupController.updateGroupName);
 
 // delete a group
 router.delete('/api/v1/groups/:id', CheckToken.validateToken, GroupController.deleteGroup);
+
+// add a user to a group
+router.post('/api/v1/groups/:id/users', CheckToken.validateToken, GroupMember.addUsertoGroup);
+
+// delete a user from a group
+router.delete('/api/v1/groups/:groupid/users/:id', CheckToken.validateToken, GroupMember.deleteGroup);
 
 export default router;

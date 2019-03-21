@@ -1,6 +1,6 @@
-const GroupMessage = ` 
+const Group = ` 
 CREATE TABLE IF NOT EXISTS 
-   GroupMessage (
+   Groups (
     id UUID PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     role VARCHAR(255) NOT NULL,
@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS
     FOREIGN KEY (ownerId) REFERENCES users (id) ON DELETE CASCADE
 )`;
 
-const createGroupMessage = ` INSERT INTO 
-GroupMessage (
+const createGroup = ` INSERT INTO 
+Groups (
     id,
     name,
     role,
@@ -18,16 +18,16 @@ GroupMessage (
     createdon
 ) VALUES ($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING returning *`;
 
-const getAllGroupMessage = ' SELECT * FROM GroupMessage WHERE ownerId = $1';
-const getAgroupById = ' SELECT * FROM GroupMessage WHERE ownerId = $1';
-const updateAgroup = ' UPDATE GroupMessage SET name = $1 WHERE id = $2 AND ownerId = $3';
-const deleteGroup = ' DELETE FROM GroupMessage WHERE id = $1 AND ownerId = $2 returning *';
+const getAllGroup = ' SELECT * FROM Groups WHERE ownerId = $1';
+const getAgroupById = ' SELECT * FROM Groups WHERE id = $1 AND ownerId = $2';
+const updateAgroup = ' UPDATE Groups SET name = $1 WHERE id = $2 AND ownerId = $3 returning *';
+const deleteGroup = ' DELETE FROM Groups WHERE id = $1 AND ownerId = $2 returning *';
 
 
 export default {
-  GroupMessage,
-  createGroupMessage,
-  getAllGroupMessage,
+  Group,
+  createGroup,
+  getAllGroup,
   getAgroupById,
   updateAgroup,
   deleteGroup,
