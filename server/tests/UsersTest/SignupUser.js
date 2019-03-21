@@ -1,33 +1,74 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import uuid from 'uuid';
-import server from '../../src/server';
-import User from '../../src/DataBase/Models/UserModel';
-import Auth from '../../src/DataBase/Helpers/validate';
+import app from '../../src/server';
+// import create from '../../src/DataBase/DB/testDB';
 
-chai.use(chaiHttp);
+// before(async () => {
+//   await create.createTable()
+//     .then(() => { console.log('you are connected'); })
+//     .catch((err) => {
+//       console.log(err);
+//       create.pool.end();
+//     });
+// });
+
 const { expect } = chai;
+const { should } = chai;
+chai.use(chaiHttp);
 
-describe.only('Sign up the user', () => {
-  it('should check for the 201 status on success', (done) => {
-    const dummy = {
-      id: uuid.v4(),
-      firstname: 'Robert',
-      lastname: 'Cyusa',
-      email: 'robalain2020@gmail.com',
-      password: Auth.hashPassword('fra334'),
-      createdon: new Date().toDateString(),
-      updatedon: new Date().toDateString(),
-      isAdmin: 'true',
-      Phone: '07889878764',
-
+let token;
+describe('create a user to the database', () => {
+  it.only('Should create an account', (done) => {
+    const user = {
+      firstname: 'Bobo',
+      lastname: 'NIYO',
+      email: 'bobo@gmail.com',
+      Phone: '0783200000',
+      password: '123456',
+      isAdmin: false,
     };
-    chai.request(server)
+    chai.request(app)
       .post('/api/v1/auth/signup')
-      .send(dummy)
+      .send(user)
       .end((err, res) => {
-        expect(res.body).to.have.status(201);
+        res.body.should.be.an('Object');
+        res.body.should.have.property('status').equal(201);
+        res.body.should.have.property('data');
+        res.body.data.should.be.an('Array');
+        ress.body.data[0].should.all.have.property('token');
+        res.body.data[0].should.all.have.property('user');
+        res.body.data[0].user.should.have.property('firstname', user.firstname);
+        res.body.data[0].user.should.have.property('lastname', user.lastname);
+        res.body.data[0].user.should.have.property('email', user.email);
+        res.body.data[0].user.should.have.property('phonenumber', user.phoneNumber);
+        res.body.data[0].user.should.have.property('isadmin', user.isAdmin);
+        done();
+      });
+  });
+
+  it('Should be able to login', (done) => {
+    const login = {
+      email: 'bobo@gmail.com',
+      password: '123456',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(login)
+      .end((err, res) => {
+        res.body.should.be.an('Object');
+        res.body.should.have.property('status').equal(200);
+        res.body.should.have.property('data');
+        res.body.data.should.be.an('Array');
+        res.body.data[0].should.have.property('token');
+        res.body.data[0].should.all.have.property('user');
+        res.body.data[0].user.should.have.property('firstname');
+        res.body.data[0].user.should.have.property('lastname');
+        res.body.data[0].user.should.have.property('othername');
+        res.body.data[0].user.should.have.property('email');
+        res.body.data[0].user.should.have.property('phonenumber');
+        res.body.data[0].user.should.have.property('passporturl');
+        res.body.data[0].user.should.have.property('isadmin');
         done();
       });
   });

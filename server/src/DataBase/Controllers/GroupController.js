@@ -4,9 +4,9 @@ import validate from '../Helpers/validate';
 import GroupQuery from '../DB/Queries/GroupQuery';
 import Pool from '../DB/QueryExecutor';
 
-class GroupMessage {
-  // post/ create a message
-  static async postGroup(req, res) {
+class Group {
+  // post/ create a group
+  static async createGroup(req, res) {
     const {
       name, role,
     } = req.body;
@@ -32,7 +32,7 @@ class GroupMessage {
       });
     }
 
-    const queryText = GroupQuery.createGroupMessage;
+    const queryText = GroupQuery.createGroup;
     const values = [
       uuid.v4(),
       name,
@@ -55,8 +55,8 @@ class GroupMessage {
     }
   }
 
-  static async getAllGroupMessages(req, res) {
-    const all = GroupQuery.getAllGroupMessage;
+  static async getAllGroup(req, res) {
+    const all = GroupQuery.getAllGroup;
 
     try {
       const { rows, rowCount } = await Pool.query(all, [req.user.id]);
@@ -73,101 +73,63 @@ class GroupMessage {
     }
   }
 
-  //   static async getMessageById(req, res) {
-  //     const queryText = MessageQuery.getById;
-  //     const values = [req.params.id, req.user.id];
-  //     try {
-  //       const { rows } = await Pool.query(queryText, values);
-  //       if (!rows) {
-  //         return res.send({
-  //           status: 404,
-  //           message: 'Message not found',
-  //         });
-  //       }
-  //       return res.send({
-  //         status: 200,
-  //         data: rows[0],
-  //       });
-  //     } catch (error) {
-  //       return res.send({
-  //         status: 400,
-  //         message: error,
-  //       });
-  //     }
-  //   }
+  // eslint-disable-next-line consistent-return
+  static async updateGroupName(req, res) {
+    const findOne = GroupQuery.getAgroupById;
+    const updateOne = GroupQuery.updateAgroup;
+    const values = [req.params.id, req.user.id];
 
-  //   static async deleteById(req, res) {
-  //     const queryText = MessageQuery.deleteById;
-  //     const values = [req.params.id, req.user.id];
+    try {
+      const { rows } = await Pool.query(findOne, values);
+      if (!rows[0]) {
+        return res.status(404).send({
+          status: 404,
+          message: 'Group not found',
+        });
+      }
+      const valuez = [
+        req.body.name,
+        req.params.id,
+        req.user.id,
+      ];
 
-  //     try {
-  //       const { rows } = await Pool.query(queryText, values);
-  //       if (!rows[0]) {
-  //         return res.send({
-  //           status: 404,
-  //           message: 'Message Not Found',
-  //         });
-  //       }
-  //       return res.send({
-  //         status: 200,
-  //         message: 'Message Deleted',
-  //       });
-  //     } catch (error) {
-  //       return res.send({
-  //         status: 404,
-  //         message: error,
-  //       });
-  //     }
-  //   }
+      const result = await Pool.query(updateOne, valuez);
+      return res.status(200).send({
+        status: 200,
+        data: result.rows,
+      });
+    } catch (err) {
+      res.status(400).send({
+        status: 400,
+        message: err,
+      });
+    }
+  }
 
-  //   static async getUnreadMessages(req, res) {
-  //     const queryText = MessageQuery.getUnread;
-  //     const values = ['unread'];
+  static async deleteGroup(req, res) {
+    const queryText = GroupQuery.deleteGroup;
+    const values = [req.params.id, req.user.id];
 
-  //     try {
-  //       const { rows } = await Pool.query(queryText, values);
-  //       if (!rows[0]) {
-  //         return res.send({
-  //           status: 404,
-  //           message: 'No unread messages found',
-  //         });
-  //       }
-  //       return res.send({
-  //         status: 200,
-  //         data: [rows],
-  //       });
-  //     } catch (error) {
-  //       return res.send({
-  //         status: 404,
-  //         message: error,
-  //       });
-  //     }
-  //   }
-
-  //   static async getSentMessages(req, res) {
-  //     const queryText = MessageQuery.getSent;
-  //     const values = ['sent'];
-
-//     try {
-//       const { rows } = await Pool.query(queryText, values);
-//       if (!rows[0]) {
-//         return res.send({
-//           status: 404,
-//           message: 'No sent messages found',
-//         });
-//       }
-//       return res.send({
-//         status: 200,
-//         data: [rows],
-//       });
-//     } catch (error) {
-//       return res.send({
-//         status: 404,
-//         message: error,
-//       });
-//     }
-//   }
+    try {
+      const { rows } = await Pool.query(queryText, values);
+      if (!rows[0]) {
+        return res.status(404).send({
+          status: 404,
+          message: 'Group Not Found',
+        });
+      }
+      return res.status(200).send({
+        status: 200,
+        message: 'Group Deleted',
+      });
+    } catch (error) {
+      return res.status(404).send({
+        status: 404,
+        message: error,
+      });
+    }
+  }
 }
 
 
-export default GroupMessage;
+export default Group;

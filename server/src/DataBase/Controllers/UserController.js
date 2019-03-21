@@ -7,19 +7,26 @@ class UserController {
   static async registerUser(req, res) {
     const newUser = Users.createUser(req.body);
     const token = Auth.generateToken(req.body.id);
-    newUser.then((done) => {
-      if (!done) {
-        return res.send({
+    newUser.then((user) => {
+      if (!user) {
+        return res.status(400).send({
           status: 400,
           message: 'The user already exists',
         });
       }
-      return res.send({
+      const uza = {
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        isAdmin: user.isadmin,
+        Phone: user.phone,
+      };
+      return res.status(201).send({
         status: 201,
-        data: [{
+        data: {
           token,
-          done,
-        }],
+          uza,
+        },
       });
     });
   }
@@ -27,13 +34,13 @@ class UserController {
   static async loginUser(req, res) {
     const { email, password } = req.body;
     if (!email || !password) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: 'please enter all the required fields',
       });
     }
     if (!Auth.emailValidation(email)) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: 'please enter a valid email',
       });
@@ -43,7 +50,7 @@ class UserController {
     try {
       const { rows } = await Pool.query(query, values);
       if (!rows[0]) {
-        return res.send({
+        return res.status(400).send({
           status: 400,
           message: 'The credentials provided are not valid',
         });
@@ -55,12 +62,12 @@ class UserController {
         });
       }
       const token = Auth.generateToken(rows[0].id);
-      return res.send({
+      return res.status(200).send({
         status: 200,
         data: [{ token }],
       });
     } catch (error) {
-      return res.send({
+      return res.status(400).send({
         status: 400,
         message: error,
       });

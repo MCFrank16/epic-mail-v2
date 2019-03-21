@@ -4,12 +4,11 @@ import dotenv from 'dotenv';
 import messageQuery from './Queries/MessageQuery';
 import UsersQuery from './Queries/UsersQuery';
 import GroupsQuery from './Queries/GroupQuery';
-import GroupMemberQuery from './Queries/GroupMemberQuery';
 
 dotenv.config();
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.TEST_URL,
 });
 
 pool.on('connect', () => {
@@ -40,7 +39,7 @@ const createTableOfUsers = async () => {
 };
 
 const createTableOfGroups = async () => {
-  const queryText = GroupsQuery.Group;
+  const queryText = GroupsQuery.GroupMessage;
   await pool.query(queryText)
     .then((res) => {
       console.log(res);
@@ -50,24 +49,15 @@ const createTableOfGroups = async () => {
     });
 };
 
-const createTableOfGroupsMembers = async () => {
-  const queryText = GroupMemberQuery.GroupMember;
-  await pool.query(queryText)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-(async () => {
+const createTable = async () => {
   await createTableOfMessages();
   await createTableOfUsers();
   await createTableOfGroups();
-  await createTableOfGroupsMembers();
   pool.end();
   console.log('Tables are created');
-})().catch((err) => {
-  console.log(err);
-});
+};
+
+export default {
+  createTable,
+  pool,
+};
