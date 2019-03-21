@@ -19,7 +19,7 @@ chai.use(chaiHttp);
 
 let token;
 describe('create a user to the database', () => {
-  it.only('Should create an account', (done) => {
+  it('Should create an account', (done) => {
     const user = {
       firstname: 'Bobo',
       lastname: 'NIYO',
