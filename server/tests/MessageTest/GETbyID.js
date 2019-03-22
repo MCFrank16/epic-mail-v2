@@ -13,8 +13,8 @@ chai.use(uuid);
 let token;
 before((done) => {
   const admin = {
-    email: 'KamIssa@gmail.com',
-    password: '654321',
+    email: 'robalain@gmail.com',
+    password: 'ROB123',
   };
 
   chai.request(server).post('/api/v1/auth/login')
@@ -26,7 +26,7 @@ before((done) => {
 });
 
 
-describe('GET a message by its specific ID', () => {
+describe.only('GET a message by its specific ID', () => {
   let id;
   beforeEach((done) => {
     chai.request(server)
