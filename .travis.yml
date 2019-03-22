@@ -1,20 +1,23 @@
 language: node_js
 node_js:
-- node
+- "stable"
+cache:
+  directories:
+    - "node_modules"
 
-script: echo "CI is running......"
-
-jobs:
-  include:
-    - stage: Produce Coverage
-      node_js: node
-      script: npm test
+env:
+  global:
+    - DATABASE_URL : postgres://travis@localhost:5432/travis
+    - SECRET : CODINGISGOOD
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+  - psql -c 'create database travis;' -U postgres
+  - npm run create
+script: npm test
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 services:
-  - postgresql
-
-before_script:
-  - psql -c 'create database epic_mail_db;' -U postgres
-  - psql -c "create user epicmail with PASSWORD 'mutafrank';" -U postgres
-  
-after_success: npm run coverage
+- postgres
