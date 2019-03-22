@@ -25,7 +25,7 @@ const saveMessage = ` INSERT INTO Messages(
    receiverId
 ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) ON CONFLICT DO NOTHING returning *`;
 
-const getAllMessages = ' SELECT * FROM Messages WHERE senderId = $1';
+const getAllMessages = ' SELECT * FROM Messages WHERE senderId = $1 AND status = $2';
 const getById = ' SELECT * FROM Messages WHERE id = $1 AND senderId = $2';
 const deleteById = ' DELETE FROM Messages WHERE id = $1 AND senderId = $2 returning *';
 const getUnread = ' SELECT * FROM Messages WHERE senderId = $1 AND status = $2';

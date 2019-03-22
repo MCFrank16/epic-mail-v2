@@ -1,24 +1,31 @@
-const GroupMember = ` 
+const GroupMessage = ` 
 
 CREATE TABLE IF NOT EXISTS 
 GroupMessage (
  id UUID PRIMARY KEY,
  createdon TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
- FOREIGN KEY (ownerId) REFERENCES users (id) ON DELETE CASCADE
+ subject VARCHAR(255) NOT NULL,
+ message VARCHAR(255) NOT NULL,
+ status VARCHAR(255) NOT NULL,
+ parentmessageid UUID NOT NULL,
+ groupid UUID NOT NULL,
+ ownerid UUID NOT NULL,
+ FOREIGN KEY (ownerId) REFERENCES users (id) ON DELETE CASCADE,
+ FOREIGN KEY (groupid) REFERENCES groups (id) ON DELETE CASCADE
 )`;
 
-const addUserToGroup = ` INSERT INTO GroupMember (
+const addMessage = ` INSERT INTO GroupMessage (
     id,
-    userId,
-    userRole,
-    ownerId,
-    createdon
-) VALUES ($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING returning *`;
-
-const deleteUserToGroup = ' DELETE FROM GroupMember WHERE id = $1 AND ownerId = $2 returning *';
+    createdon,
+    subject,
+    message,
+    status,
+    parentmessageid,
+    groupid,
+    ownerid
+) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT DO NOTHING returning *`;
 
 export default {
-  GroupMember,
-  addUserToGroup,
-  deleteUserToGroup,
+  GroupMessage,
+  addMessage,
 };

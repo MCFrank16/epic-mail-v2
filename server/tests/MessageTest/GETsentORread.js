@@ -13,8 +13,8 @@ chai.use(chaiHttp);
 let token;
 before((done) => {
   const admin = {
-    email: 'KamIssa@gmail.com',
-    password: '654321',
+    email: 'robalain@gmail.com',
+    password: 'ROB123',
   };
 
   chai.request(server).post('/api/v1/auth/login')
@@ -40,7 +40,7 @@ describe('GET all Sent Messages', () => {
       .send(data)
       .set('x-access-token', token)
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(404);
         done();
       });
   });

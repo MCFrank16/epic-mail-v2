@@ -61,7 +61,7 @@ class MessageData {
     } catch (error) {
       return res.status(400).send({
         status: 400,
-        message: error,
+        message: 'Bad Request to the server',
       });
     }
   }
@@ -70,16 +70,17 @@ class MessageData {
     const all = MessageQuery.getAllMessages;
 
     try {
-      const { rows, rowCount } = await Pool.query(all, [req.user.id]);
+      const { rows, rowCount } = await Pool.query(all, [req.user.id, 'received']);
       return res.status(200).send({
         status: 200,
         data: rows,
         rowCount,
       });
     } catch (error) {
+      console.log(error);
       return res.status(400).send({
         status: 400,
-        message: error,
+        message: 'Bad Request to the server',
       });
     }
   }
@@ -102,7 +103,7 @@ class MessageData {
     } catch (error) {
       return res.status(400).send({
         status: 400,
-        message: error,
+        message: 'Bad Request to the server',
       });
     }
   }
@@ -126,7 +127,7 @@ class MessageData {
     } catch (error) {
       return res.status(400).send({
         status: 400,
-        message: error,
+        message: 'Bad Request to the server',
       });
     }
   }
@@ -151,7 +152,7 @@ class MessageData {
     } catch (error) {
       return res.status(404).send({
         status: 400,
-        message: error,
+        message: 'Bad Request to the server',
       });
     }
   }
@@ -176,7 +177,7 @@ class MessageData {
     } catch (error) {
       return res.status(400).send({
         status: 400,
-        message: error,
+        message: 'Bad Request to the server',
       });
     }
   }

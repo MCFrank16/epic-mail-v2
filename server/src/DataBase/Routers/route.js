@@ -53,9 +53,12 @@ router.patch('/api/v1/groups/:id/name', CheckToken.validateToken, GroupControlle
 router.delete('/api/v1/groups/:id', CheckToken.validateToken, GroupController.deleteGroup);
 
 // add a user to a group
-router.post('/api/v1/groups/:id/users', CheckToken.validateToken, GroupMember.addUsertoGroup);
+router.post('/api/v1/groups/:groupId/users', CheckToken.validateToken, GroupMember.addUsertoGroup);
 
 // delete a user from a group
-router.delete('/api/v1/groups/:groupid/users/:id', CheckToken.validateToken, GroupMember.deleteGroup);
+router.delete('/api/v1/groups/:groupId/users/:userId', CheckToken.validateToken, GroupMember.deleteUsertoGroup);
+
+// add a message to a group
+router.post('/api/v1/groups/:groupId/messages', CheckToken.validateToken, GroupMember.addMessageToGroup);
 
 export default router;

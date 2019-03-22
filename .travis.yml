@@ -1,20 +1,20 @@
 language: node_js
+node_js:
+- node
 
-node_js: 
-  - "stable"
+script: echo "CI is running......"
 
-cache:
-  directories:
-    - "node_modules"
-    
-after_success:
-- npm run coverage
+jobs:
+  include:
+    - stage: Produce Coverage
+      node_js: node
+      script: npm test
 
 services:
   - postgresql
-  
-addons:
-  postgresql: "9.6"
 
-  before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+before_script:
+  - psql -c 'create database epic_mail_db;' -U postgres
+  - psql -c "create user epicmail with PASSWORD 'mutafrank';" -U postgres
+  
+after_success: npm run coverage

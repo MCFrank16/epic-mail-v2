@@ -2,10 +2,10 @@ import chai from 'chai';
 import server from '../src/server';
 
 const should = chai.should();
-const {expect} = chai;
+const { expect } = chai;
 
 // eslint-disable-next-line no-undef
-describe('it should test the router', (done) => {
+describe('it should test the router', () => {
   // eslint-disable-next-line no-undef
   it('should send welcome to epic mail endpoint', (done) => {
     chai.request(server)
@@ -25,5 +25,4 @@ describe('it should test the router', (done) => {
         done();
       });
   });
-})
-;
+});

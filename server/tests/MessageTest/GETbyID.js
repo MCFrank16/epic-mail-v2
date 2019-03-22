@@ -26,7 +26,7 @@ before((done) => {
 });
 
 
-describe.only('GET a message by its specific ID', () => {
+describe('GET a message by its specific ID', () => {
   let id;
   beforeEach((done) => {
     chai.request(server)
