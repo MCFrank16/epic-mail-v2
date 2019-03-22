@@ -2,55 +2,43 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../src/server';
-// import create from '../../src/DataBase/DB/testDB';
-
-// before(async () => {
-//   await create.createTable()
-//     .then(() => { console.log('you are connected'); })
-//     .catch((err) => {
-//       console.log(err);
-//       create.pool.end();
-//     });
-// });
 
 const { expect } = chai;
-const { should } = chai;
 chai.use(chaiHttp);
 
-let token;
 describe('create a user to the database', () => {
   it('Should create an account', (done) => {
     const user = {
-      firstname: 'Bobo',
-      lastname: 'NIYO',
-      email: 'bobo@gmail.com',
+      firstname: 'Isagy',
+      lastname: 'Kamgsy',
+      email: 'Kamysjsa@gmail.com',
+      password: '654321',
+      isAdmin: 'true',
       Phone: '0783200000',
-      password: '123456',
-      isAdmin: false,
     };
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send(user)
       .end((err, res) => {
         res.body.should.be.an('Object');
-        res.body.should.have.property('status').equal(201);
-        res.body.should.have.property('data');
-        res.body.data.should.be.an('Array');
-        ress.body.data[0].should.all.have.property('token');
-        res.body.data[0].should.all.have.property('user');
-        res.body.data[0].user.should.have.property('firstname', user.firstname);
-        res.body.data[0].user.should.have.property('lastname', user.lastname);
-        res.body.data[0].user.should.have.property('email', user.email);
-        res.body.data[0].user.should.have.property('phonenumber', user.phoneNumber);
-        res.body.data[0].user.should.have.property('isadmin', user.isAdmin);
+        expect(res.body).to.have.property('status').equal(201);
+        expect(res.body).to.have.property('data');
+        expect(res.body.data).to.be.an('Object');
+        res.body.data.should.have.property('token');
+        res.body.data.should.have.property('uza');
+        res.body.data.uza.should.have.property('firstname', user.firstname);
+        res.body.data.uza.should.have.property('lastname', user.lastname);
+        res.body.data.uza.should.have.property('email', user.email);
+        res.body.data.uza.should.have.property('Phone', user.Phone);
+        res.body.data.uza.should.have.property('isAdmin').to.eql('true');
         done();
       });
   });
 
   it('Should be able to login', (done) => {
     const login = {
-      email: 'bobo@gmail.com',
-      password: '123456',
+      email: 'KamIssa@gmail.com',
+      password: '654321',
     };
     chai.request(app)
       .post('/api/v1/auth/login')
@@ -61,14 +49,6 @@ describe('create a user to the database', () => {
         res.body.should.have.property('data');
         res.body.data.should.be.an('Array');
         res.body.data[0].should.have.property('token');
-        res.body.data[0].should.all.have.property('user');
-        res.body.data[0].user.should.have.property('firstname');
-        res.body.data[0].user.should.have.property('lastname');
-        res.body.data[0].user.should.have.property('othername');
-        res.body.data[0].user.should.have.property('email');
-        res.body.data[0].user.should.have.property('phonenumber');
-        res.body.data[0].user.should.have.property('passporturl');
-        res.body.data[0].user.should.have.property('isadmin');
         done();
       });
   });

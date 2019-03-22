@@ -2,39 +2,57 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import server from '../src/server';
+import app from '../src/server';
 import validators from '../src/DataBase/Helpers/validate';
 
 const { expect } = chai;
 chai.use(chaiHttp);
+let token;
+
+before((done) => {
+  const admin = {
+    email: 'KamIssa@gmail.com',
+    password: '654321',
+  };
+
+  chai.request(app).post('/api/v1/auth/login')
+    .send(admin)
+    .end((err, res) => {
+      token = res.body.data[0].token;
+      done();
+    });
+});
+
 
 describe('It should test the validator class', () => {
   it('should ask a user to enter a subject', (done) => {
-    chai.request(server)
+    chai.request(app)
       .post('/api/v1/messages')
       .send({
         subject: '',
         message: 'Hey',
         receiverEmail: 'mecfrank@gmail.com',
       })
+      .set('x-access-token', token)
       .end((err, res) => {
         expect(res.body).to.have.property('status').to.eql(400);
-        expect(res.body).to.have.property('message').to.eql('Please enter the subject');
+        expect(res.body).to.have.property('message').to.eql('Please fill in all the requirements');
         done();
       });
   });
 
   it('should ask a user to enter a message', (done) => {
-    chai.request(server)
+    chai.request(app)
       .post('/api/v1/messages')
       .send({
         subject: 'Hey',
         message: '',
         receiverEmail: 'mecfrank@gmail.com',
       })
+      .set('x-access-token', token)
       .end((err, res) => {
         expect(res.body).to.have.property('status').to.eql(400);
-        expect(res.body).to.have.property('message').to.eql('Please enter your message');
+        expect(res.body).to.have.property('message').to.eql('Please fill in all the requirements');
         done();
       });
   });
@@ -62,4 +80,33 @@ describe('It should test the validator class', () => {
     expect(token).to.equal(token);
     done();
   });
+
+  it('should validate a name', (done) => {
+    const namePattern = /^[a-zA-Z]{5,}[a-zA-Z ]*$/;
+    const name = 'Frank';
+    const result = namePattern.test(name);
+    expect(name).to.be.a('string');
+    expect(result).to.eql(true);
+    done();
+  });
+
+  it('should validate a Username', (done) => {
+    const namePattern = /^[a-zA-Z]{1,10}[a-zA-Z ]*$/;
+    const name = 'MUFrank';
+    const result = namePattern.test(name);
+    expect(name).to.be.a('string');
+    expect(result).to.eql(true);
+    done();
+  });
+
+  // it.only('should validate a Phone Number', (done) => {
+  //   const namePattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  //   // eslint-disable-next-line radix
+  //   const name = Number('0788554548');
+
+  //   const result = namePattern.test(name);
+  //   expect(name).to.be.a(Number);
+  //   expect(result).to.eql(true);
+  //   done();
+  // });
 });
