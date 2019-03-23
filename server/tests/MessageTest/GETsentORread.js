@@ -20,6 +20,7 @@ before((done) => {
   chai.request(server).post('/api/v1/auth/login')
     .send(admin)
     .end((err, res) => {
+      console.log(res.body.data);
       token = res.body.data[0].token;
       done();
     });
