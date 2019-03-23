@@ -2,8 +2,8 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../server';
-import validators from '../DataBase/Helpers/validate';
+import app from '../src/server';
+import validators from '../src/DataBase/Helpers/validate';
 
 const { expect } = chai;
 chai.use(chaiHttp);
@@ -11,8 +11,8 @@ let token;
 
 before((done) => {
   const admin = {
-    email: 'misyves@gmail.com',
-    password: 'ROB1234',
+    email: 'ClaudeManziy@gmail.com',
+    password: 'ROB123',
   };
 
   chai.request(app).post('/api/v1/auth/login')
