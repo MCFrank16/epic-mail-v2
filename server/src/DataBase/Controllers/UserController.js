@@ -8,7 +8,7 @@ class UserController {
     const newUser = Users.createUser(req.body);
     const token = Auth.generateToken(req.body.id);
     newUser.then((uza) => {
-      if (!uza) {
+      if (!uza.length) {
         return res.status(400).send({
           status: 400,
           message: 'The user already exists',

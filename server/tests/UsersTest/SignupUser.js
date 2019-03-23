@@ -10,10 +10,10 @@ chai.use(chaiHttp);
 describe('create a user to the database', () => {
   it('Should create an account', (done) => {
     const user = {
-      firstname: 'Gakwa',
-      lastname: 'Raymo',
-      email: 'GakwayaRay@gmail.com',
-      password: '654321',
+      firstname: 'Robert',
+      lastname: 'Mujyambere',
+      email: 'robalain@gmail.com',
+      password: 'ROB123',
       isAdmin: 'true',
       Phone: '0783200000',
     };
