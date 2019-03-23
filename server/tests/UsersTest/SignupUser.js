@@ -39,7 +39,7 @@ describe('create a user to the database', () => {
 
   it('Should be able to login', (done) => {
     const login = {
-      email: 'ClaudManzukic@gmail.com',
+      email: 'ClaudManzukich@gmail.com',
       password: 'ROB123',
     };
     chai.request(app)
