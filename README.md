@@ -7,7 +7,7 @@
 This is a messaging platform which let its user interact with each other. #AndelaChallenge
 
 # Heroku Link: 
-https://epik-mail-v2.herokuapp.com/api/v1/messages
+https://epik-mail-v2.herokuapp.com/api/v1/
 # UI Link: 
 https://mcfrank16.github.io/EpicMail/
 
