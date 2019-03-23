@@ -10,9 +10,9 @@ chai.use(chaiHttp);
 describe('create a user to the database', () => {
   it('Should create an account', (done) => {
     const user = {
-      firstname: 'Alice',
-      lastname: 'Mujyambere',
-      email: 'AliceMujya@gmail.com',
+      firstname: 'Alicee',
+      lastname: 'Mujyamberee',
+      email: 'AliceMujyaee@gmail.com',
       password: 'ROB123',
       isAdmin: 'true',
       Phone: '0783200000',
@@ -21,6 +21,7 @@ describe('create a user to the database', () => {
       .post('/api/v1/auth/signup')
       .send(user)
       .end((err, res) => {
+        console.log(res.body);
         expect(res.body).to.be.an('Object');
         expect(res.body).to.have.property('status').equal(201);
         expect(res.body).to.have.property('data');
@@ -38,13 +39,14 @@ describe('create a user to the database', () => {
 
   it('Should be able to login', (done) => {
     const login = {
-      email: 'AliceMujya@gmail.com',
-      password: 'ROB1234',
+      email: 'AliceMujyaee@gmail.com',
+      password: 'ROB123',
     };
     chai.request(app)
       .post('/api/v1/auth/login')
       .send(login)
       .end((err, res) => {
+        console.log(res.body);
         expect(res.body).to.be.an('Object');
         expect(res.body).to.have.property('status').equal(200);
         expect(res.body).to.have.property('data');
