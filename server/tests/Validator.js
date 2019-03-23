@@ -11,8 +11,8 @@ let token;
 
 before((done) => {
   const admin = {
-    email: 'robalain@gmail.com',
-    password: 'ROB123',
+    email: 'misyves@gmail.com',
+    password: 'ROB1234',
   };
 
   chai.request(app).post('/api/v1/auth/login')
