@@ -2,8 +2,8 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../src/server';
-import validators from '../src/DataBase/Helpers/validate';
+import app from '../server';
+import validators from '../DataBase/Helpers/validate';
 
 const { expect } = chai;
 chai.use(chaiHttp);

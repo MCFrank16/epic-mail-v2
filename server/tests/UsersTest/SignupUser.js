@@ -10,10 +10,10 @@ chai.use(chaiHttp);
 describe('create a user to the database', () => {
   it('Should create an account', (done) => {
     const user = {
-      firstname: 'Yves',
-      lastname: 'Mujyambere',
-      email: 'misyves@gmail.com',
-      password: 'ROB1234',
+      firstname: 'Yvess',
+      lastname: 'Mujyamberes',
+      email: 'misyvess@gmail.com',
+      password: 'ROB1234s',
       isAdmin: 'true',
       Phone: '0783200000',
     };
@@ -38,8 +38,8 @@ describe('create a user to the database', () => {
 
   it('Should be able to login', (done) => {
     const login = {
-      email: 'misyves@gmail.com',
-      password: 'ROB1234',
+      email: 'misyvess@gmail.com',
+      password: 'ROB1234s',
     };
     chai.request(app)
       .post('/api/v1/auth/login')
