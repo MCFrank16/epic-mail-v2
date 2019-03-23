@@ -11,10 +11,10 @@ describe('create a user to the database', () => {
   it('Should create an account', (done) => {
     const user = {
       firstname: 'Claude',
-      lastname: 'Mujya',
-      email: 'ClaudeMujya@gmail.com',
+      lastname: 'Manzi',
+      email: 'ClaudeManzi@gmail.com',
       password: 'ROB123',
-      isAdmin: 'true',
+      isAdmin: true,
       Phone: '0783200000',
     };
     chai.request(app)
@@ -32,14 +32,14 @@ describe('create a user to the database', () => {
         expect(res.body.data.user).to.have.property('lastname', user.lastname);
         expect(res.body.data.user).to.have.property('email', user.email);
         expect(res.body.data.user).to.have.property('Phone', user.Phone);
-        expect(res.body.data.user).to.have.property('isAdmin').to.be(true);
+        expect(res.body.data.user).to.have.property('isAdmin').to.eql('true');
         done();
       });
   });
 
   it('Should be able to login', (done) => {
     const login = {
-      email: 'ClaudeMujya@gmail.com',
+      email: 'ClaudeManzi@gmail.com',
       password: 'ROB123',
     };
     chai.request(app)
