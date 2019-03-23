@@ -11,8 +11,8 @@ describe('create a user to the database', () => {
   it('Should create an account', (done) => {
     const user = {
       firstname: 'Claudine',
-      lastname: 'Manzukic',
-      email: 'ClaudManzukic@gmail.com',
+      lastname: 'Manzukich',
+      email: 'ClaudManzukich@gmail.com',
       password: 'ROB123',
       isAdmin: true,
       Phone: '0783200000',

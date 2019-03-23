@@ -11,7 +11,7 @@ let token;
 
 before((done) => {
   const admin = {
-    email: 'ClaudeManziy@gmail.com',
+    email: 'ClaudManzukic@gmail.com',
     password: 'ROB123',
   };
 
