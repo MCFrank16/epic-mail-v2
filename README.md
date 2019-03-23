@@ -24,8 +24,8 @@ https://mcfrank16.github.io/EpicMail/
 | Delete /api/v1/message/:id    | Delete a specific Message By its Identification | 
 | POST   /api/v1/groups         | create a group.                                 | 
 | GET    /api/v1/groups         | Fetch all group the user has created            |
-| PATCH  /api/v1/groups/:groupId/name   update a specific group                   |
-| POST   /api/v1/groups/:groupId/users  insert a group member in a group          |
-| DELETE /groups/:groupId/users/:id     Delete a user in the group                |
+| PATCH  groups/:groupId/name   | update a specific group                         |
+| POST   groups/:groupId/users  | insert a group member in a group                |
+| DELETE /:groupId/users/:id    | Delete a user in the group                      |
 | POST /groups/groupId/messages | create a message to a  specific Group By its Identification
 
