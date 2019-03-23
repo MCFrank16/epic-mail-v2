@@ -34,4 +34,4 @@ before_script:
 script:
   - npm test
 after_success:
-  - codecov
+  - npm run coverage

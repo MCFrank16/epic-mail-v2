@@ -12,8 +12,8 @@ describe('create a user to the database', () => {
   it('Should create an account', (done) => {
     const user = {
       firstname: 'Claudine',
-      lastname: 'nyinawu',
-      email: 'Claudinyinawu@gmail.com',
+      lastname: 'nyinawugabo',
+      email: 'nyinawuclau@gmail.com',
       password: 'ROB123',
       isAdmin: true,
       Phone: '0783200000',
@@ -40,7 +40,7 @@ describe('create a user to the database', () => {
 
   it('Should be able to login', (done) => {
     const login = {
-      email: 'Claudinyinawu@gmail.com',
+      email: 'nyinawuclau@gmail.com',
       password: 'ROB123',
     };
     chai.request(app)
