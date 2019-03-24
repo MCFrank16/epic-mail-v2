@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import chai from 'chai';
 import server from '../src/server';
 
@@ -24,5 +25,11 @@ describe('it should test the router', () => {
         expect(res.body).to.have.property('Message').to.eql('URL not Found');
         done();
       });
+  });
+
+  it('should set the port variable', (done) => {
+    const PORT = process.env.PORT || 8080;
+    expect(PORT).to.eql(PORT);
+    done();
   });
 });
