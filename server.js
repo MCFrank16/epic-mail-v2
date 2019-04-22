@@ -57,6 +57,12 @@ app.use('*', (req, res) => res.status(404).send({
 //   res.sendFile(`${uiPath}html/index.html`);
 // });
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Controll-Allow-Origin', 'https://epik-mail-v2.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+  next();
+});
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`the app is running at http://localhost: ${PORT}`);
