@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
-import server from '../src/server';
+import server from '../../server';
 
 const should = chai.should();
 const { expect } = chai;

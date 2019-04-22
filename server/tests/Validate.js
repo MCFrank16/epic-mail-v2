@@ -1,10 +1,6 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import jwt from 'jsonwebtoken';
-import Pool from '../src/DataBase/DB/QueryExecutor';
-import userquery from '../src/DataBase/DB/Queries/UsersQuery';
-import app from '../src/server';
 import checkToken from '../src/DataBase/Middleware/Validate';
 
 
