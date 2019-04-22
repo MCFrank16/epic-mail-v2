@@ -17,7 +17,7 @@ class User {
       password,
       moment(new Date()),
       moment(new Date()),
-      dataBody.isAdmin,
+      dataBody.isAdmin === 'false',
       dataBody.Phone,
     ];
     try {
