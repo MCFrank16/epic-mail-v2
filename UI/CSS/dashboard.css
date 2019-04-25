@@ -1,0 +1,405 @@
+@charset "utf -8";
+
+/*
+=============================
+         common
+=============================
+*/
+
+html {
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    height: 150%;
+}
+
+.sidebar {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-color: rgba(40,57,101,.9);
+}
+
+.main{
+    float: right;
+    width: 80%;
+    height: 100%;
+    background-color: white;
+}
+
+.content {
+    padding: 10px 100px;
+}
+
+/*
+=============================
+         sidebar
+=============================
+*/
+
+.appName {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    color: white;
+}
+
+.appName a {
+    text-decoration: none;
+    color: white;
+}
+
+.appName a:hover {
+     color: #f4511e;
+}
+
+ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+    border-bottom: 1px solid #f4511e;
+    padding-left: 30px;
+    line-height: 60px;
+}
+
+ul li:first-child {
+    border-top: 1px solid #f4511e;
+
+}
+
+ul li:hover {
+    background-color: #f4511e;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    display: block;
+    line-height: 60px;
+}
+
+.active {
+    background-color: #f4511e;
+}
+
+#title {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 35px;
+    margin-top: 23px;
+}
+
+#btnbtn {
+  
+    background-color: #24751d;
+    color: white;
+    padding: 15px 55px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    float: left;
+}
+
+.formContainer {
+    border-radius: 5px;
+    background-color: #6a6f8c;
+    padding: 20px;
+    height: 300px;
+    margin-top: -2%;
+  }
+  input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  #add {
+    width: 650px;
+  }
+
+  #remove {
+    width: 650px;
+  }
+
+  #btn5{
+    width: 147px;
+    height: 42px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+
+  }
+
+  input[type=email]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  #btn1 {
+    background-color: #24751d;
+    color: white;
+    padding: 15px 55px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    float: left;
+    
+  }
+
+
+
+
+  input[type=button] {
+    background-color: #f4511e;
+    color: white;
+    padding: 15px 55px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    float: right;
+    
+  }
+
+  #renamebtn {
+    background-color: #f4511e;
+    color: white;
+    padding: 12px 50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    float: right;
+    height: 45px;
+  }
+
+  #renamebtn2 {
+    background-color: #f4511e;
+    color: white;
+    padding: 12px 50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    float: left;
+    height: 45px;
+  }
+
+
+
+ #spec{
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 30px;
+ }
+
+ #para {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+ }
+
+ #myInput1 {
+    background-image: url('../images/toolbar_find.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+  
+  #myTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+  }
+  
+  #myTable th, #myTable td {
+    text-align: left;
+    padding: 12px;
+  }
+  
+  #myTable tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #myTable tr.header, #myTable tr:hover {
+    background-color: #f1f1f1;
+
+  }
+
+  
+#snackbar {
+    visibility: hidden; 
+    min-width: 250px; 
+    margin-left: -125px; 
+    background-color: #333; 
+    color: #fff; 
+    text-align: center;
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed;
+    z-index: 1; 
+    left: 50%;
+    bottom: 30px; 
+  }
+  
+  
+  #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  #snackbar2 {
+    visibility: hidden; 
+    min-width: 250px; 
+    margin-left: -125px; 
+    background-color: #333; 
+    color: #fff; 
+    text-align: center;
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed;
+    z-index: 1; 
+    left: 50%;
+    bottom: 30px; 
+  }
+  
+  
+  #snackbar2.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  #snackRetract {
+    visibility: hidden; 
+    min-width: 250px; 
+    margin-left: -125px; 
+    background-color: #333; 
+    color: #fff; 
+    text-align: center;
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed;
+    z-index: 1; 
+    left: 50%;
+    bottom: 30px; 
+  }
+  
+  
+  #snackRetract.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+ 
+  .tile_div a {
+    display: block;
+    float: left;
+    height: 40px;
+    width: 250px;
+    margin-right: 5px;
+    background-color: #f4511e;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+
+
