@@ -6,15 +6,17 @@ import Pool from '../DB/QueryExecutor';
 class UserController {
   static async registerUser(req, res) {
     const newUser = Users.createUser(req.body);
-    const token = Auth.generateToken(req.body.id);
     newUser.then((uza) => {
       if (!uza) {
         return res.status(400).send({
           status: 400,
-          message: 'The user already exists',
+          message: 'Sorry!!! we already have these details in our database',
         });
       }
+
+      const token = Auth.generateToken(uza.id);
       const user = {
+        id: uza.id,
         firstname: uza.firstname,
         lastname: uza.lastname,
         email: uza.email,
@@ -52,19 +54,23 @@ class UserController {
       if (!rows[0]) {
         return res.status(400).send({
           status: 400,
-          message: 'The credentials provided are not valid',
+          message: 'OOOps, Please create an account!!!',
         });
       }
       if (!Auth.comparePassword(password, rows[0].password)) {
         return res.send({
           status: 400,
-          message: 'Please enter the password you provided on signup process',
+          message: 'Something is wrong with your credentials!!!',
         });
       }
       const token = Auth.generateToken(rows[0].id);
+      const userRole = rows[0].isadmin;
       return res.status(200).send({
         status: 200,
-        data: [{ token }],
+        data: {
+          token,
+          userRole,
+        },
       });
     } catch (error) {
       return res.status(400).send({
