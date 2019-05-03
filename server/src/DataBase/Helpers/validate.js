@@ -31,9 +31,12 @@ class Validate {
     return bcrypt.compareSync(hashPassword, password);
   }
 
-  static generateToken(id) {
+  static generateToken(id, email, firstname, lastname) {
     const token = jwt.sign({
       userId: id,
+      userEmail: email,
+      userFirstname: firstname,
+      userLastname: lastname,
     },
     process.env.SECRET, { expiresIn: '1d' });
 

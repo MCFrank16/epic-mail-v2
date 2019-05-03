@@ -27,7 +27,7 @@ const saveUser = `INSERT INTO users(
 ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) ON CONFLICT DO NOTHING returning *`;
 
 const loginUser = 'SELECT * FROM users WHERE email = $1 LIMIT 1';
-const getUser = ' SELECT * FROM users WHERE id = $1';
+const getUser = ' SELECT * FROM users WHERE id = $1 AND email = $2 AND firstname = $3 AND lastname = $4';
 const dropUser = 'DROP TABLE IF EXISTS users';
 
 export default {
