@@ -16,20 +16,35 @@ const router = express.Router();
 router.get('/api/v1', (req, res) => {
   res.send({ message: 'Welcome to Epic Mail Service API EndPoint' });
 });
-// get all Epic Messages Endpoint
-router.get('/api/v1/messages', CheckToken.validateToken, epicControllers.getAllMessages);
+// get all Inbox Messages Endpoint
+router.get('/api/v1/messages/inbox', CheckToken.validateToken, epicControllers.getInboxMessages);
+
+// mark a message as read
+router.put('/api/v1/update/:id/read', CheckToken.validateToken, epicControllers.markMessageAsRead);
 
 // POST/create/send a message
-router.post('/api/v1/messages', CheckToken.validateToken, epicControllers.postMessage);
+router.post('/api/v1/message/send', CheckToken.validateToken, epicControllers.postMessage);
 
-// // Get all unread Messages
-router.get('/api/v1/messages/unread', CheckToken.validateToken, epicControllers.getUnreadMessages);
+// POST/create/draft a message
+router.post('/api/v1/message/draft', CheckToken.validateToken, epicControllers.makeDraftMessage);
+
+// // Get all draft Messages
+router.get('/api/v1/draft/messages', CheckToken.validateToken, epicControllers.getdraftMessages);
+
+// Resend a drafted Message
+router.put('/api/v1/resend/:id/message', CheckToken.validateToken, epicControllers.resendMessage);
 
 // // Get all sent Messages
 router.get('/api/v1/messages/sent', CheckToken.validateToken, epicControllers.getSentMessages);
 
 // // Get Message by Id
 router.get('/api/v1/messages/:id', CheckToken.validateToken, epicControllers.getMessageById);
+
+// Get Message by ParentMessageId
+router.get('/api/v1/:parentMessageId/messages', CheckToken.validateToken, epicControllers.getMessageByParentMessageId);
+
+// Reply Message
+router.post('/api/v1/:parentMessageId/reply/messages', CheckToken.validateToken, epicControllers.replyMessage);
 
 // // Delete Message by Id
 router.delete('/api/v1/messages/:id', CheckToken.validateToken, epicControllers.deleteById);

@@ -17,25 +17,8 @@ app.use(helmet());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
 app.use(routes);
 
-// app.use(helmet.contentSecurityPolicy({
-//   directives: {
-//     defaultSrc: ["'self'"],
-//     imgSrc: ["'self'"],
-//     styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
-//   },
-// }));
-
-// app.use((req, res, next) => {
-//   if (req.originalUrl && req.originalUrl.split('/').pop() === 'favicon.ico') {
-//     return res.sendStatus(204);
-//   }
-
-//   return next();
-// });
 const uiPath = path.join(__dirname, './UI/');
 app.use(favicon(`${uiPath}Images/favicon.ico`));
 app.use(express.static(uiPath));
@@ -48,19 +31,30 @@ app.get('/index', (req, res) => {
   res.sendFile(`${uiPath}html/index.html`);
 });
 
+app.get('/compose/email', (req, res) => {
+  res.sendFile(`${uiPath}html/ClientUser/clientCompose.html`);
+});
+
+app.get('/inbox', (req, res) => {
+  res.sendFile(`${uiPath}html/ClientUser/clientInbox.html`);
+});
+
+app.get('/inbox/:id', (req, res) => {
+  res.sendFile(`${uiPath}html/ClientUser/clientOpenMail.html`);
+});
+
+app.get('/sent', (req, res) => {
+  res.sendFile(`${uiPath}html/ClientUser/clientSentMessage.html`);
+});
+
+app.get('/draft', (req, res) => {
+  res.sendFile(`${uiPath}html/ClientUser/clientdraftMessage.html`);
+});
+
 app.use('*', (req, res) => res.status(404).send({
   Status: 404,
   Message: 'URL not Found',
 }));
-
-// app.use('uploads', express.static('uploads'));
-
-
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Controll-Allow-Origin', 'https://epik-mail-v2.herokuapp.com');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-//   next();
-// });
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

@@ -6,37 +6,76 @@
 =============================
 */
 
+ * {
+   box-sizing: border-box;
+   }
+
 html {
     height: 100%;
 }
 
 body{
     height: 100%;
-    margin: 0;
+    margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
 }
 .container{
-    height: 150%;
+    height: 100%;
 }
 
 .sidebar {
-    float: left;
+    display: inline-block;
     width: 20%;
     height: 100%;
     background-color: rgba(40,57,101,.9);
 }
 
 .main{
+    
     float: right;
     width: 80%;
     height: 100%;
     background-color: white;
 }
 
+.main1{
+  position: relative;
+  float: right;
+  width: 80%;
+  height: 100%;
+  background-color: white;
+}
+
 .content {
     padding: 10px 100px;
 }
 
+.content1 {
+  padding: 13px 15px;
+  position: fixed;
+}
+.formContainer12 #btnbtn {
+  position: fixed;
+  bottom: 70px;
+  right: 11.5%;
+}
+
+.formContainer12 {
+  height: 520px;
+  border-radius: 5px;
+  background-color: #6a6f8c;
+  padding: 16px;
+  margin: 125px;
+  margin-top: -2%;
+  width: 725px;
+}
+.formContainer12 #myInput11 {
+  width: 530px;
+  height: 50px;
+  position: fixed;
+  bottom: 55px;
+  left: 32%;
+}
 /*
 =============================
          sidebar
@@ -53,6 +92,7 @@ body{
 .appName a {
     text-decoration: none;
     color: white;
+    
 }
 
 .appName a:hover {
@@ -88,6 +128,8 @@ ul li a {
     font-size: 14px;
     display: block;
     line-height: 60px;
+    position: relative;
+    left: 75px;
 }
 
 .active {
@@ -105,18 +147,32 @@ ul li a {
     background-color: #24751d;
     color: white;
     padding: 15px 55px;
-    border: none;
-    border-radius: 4px;
+    border: none; 
+    border-radius: 25px;
     cursor: pointer;
     font-size: 20px;
-    float: left;
+    float: right;
+    margin-right: 45px;
+}
+
+#btnbtn1 {
+  
+  background-color: #24751d;
+  color: white;
+  padding: 15px 55px;
+  border: none; 
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 20px;
+  float: left;
+  margin-right: 45px;
 }
 
 .formContainer {
     border-radius: 5px;
     background-color: #6a6f8c;
     padding: 20px;
-    height: 300px;
+    height: 490px;
     margin-top: -2%;
   }
   input[type=text], textarea {
@@ -128,6 +184,33 @@ ul li a {
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
+  }
+
+  .formContainer12 #replyBox {
+    position: relative;
+    height: 420px;
+    overflow: auto;
+    max-width: 100%;
+  }
+
+  .formContainer1 {
+    border-radius: 5px;
+    background-color: #6a6f8c;
+    height: 590px;
+    width: 100%;
+    padding: 20px;
+    margin-top: 5px;
+    
+  }
+
+  .formContainer2 {
+    border-radius: 5px;
+    background-color: #6a6f8c;
+    height: 460px;
+    width: 96%;
+    padding: 20px;
+    margin: 1px;
+    
   }
   #add {
     width: 650px;
@@ -168,7 +251,23 @@ ul li a {
     float: left;
     
   }
-
+  .badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #2C3E50;
+    border-radius: 10px;
+    margin-left: -10%;
+    position: relative;
+    right: 55px;
+  }
 
 
 
@@ -213,15 +312,17 @@ ul li a {
  #spec{
    font-family: 'Courier New', Courier, monospace;
    font-size: 30px;
+   color: #ddd;
  }
 
  #para {
     font-family: 'Courier New', Courier, monospace;
     font-size: 15px;
+    color: #ddd;
  }
 
  #myInput1 {
-    background-image: url('../images/toolbar_find.png');
+    background-image: url('../Images/toolbar_find.png');
     background-position: 10px 10px;
     background-repeat: no-repeat;
     width: 100%;
@@ -250,6 +351,48 @@ ul li a {
   #myTable tr.header, #myTable tr:hover {
     background-color: #f1f1f1;
 
+  }
+
+  #myTable1 {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+  }
+
+  #myTable1 tbody {
+    display:block;
+    width: 980px;
+    overflow: auto;
+    height:  320px;
+  }
+
+  #myTable1 thead tr {
+    display: block;
+  }
+
+  #myTable1 th {
+    color: aliceblue;
+  }
+  
+  #myTable1 th, #myTable1 td{
+    text-align: left;
+    padding: 12px;
+    width: 270px;
+  }
+  
+  #myTable1 tr {
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  #myTable1 td{
+    font-family: cursive;
+    font-size: 90%;
+  }
+  
+  #myTable1 tr:hover {
+    background-color: #f1f1f1;
   }
 
   
@@ -400,6 +543,186 @@ ul li a {
     text-decoration: none;
     color: aliceblue;
 }
+
+#deleteBtn {
+  position: absolute;
+  top: 4%;
+  right: 14%;
+  background-color: red;
+}
+
+#replySnack {
+  visibility: hidden; 
+  min-width: 250px; 
+  margin-left: -125px; 
+  background-color: #333; 
+  color: #fff; 
+  text-align: center;
+  border-radius: 2px; 
+  padding: 16px; 
+  position: fixed;
+  z-index: 1; 
+  left: 50%;
+  bottom: 30px; 
+}
+
+
+#replySnack.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+.modal {
+  display: none;  /*Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 170px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #f4511e;
+  margin: auto;
+  padding: 10px 10px;
+  border: 1px solid #f4511e;
+  border-radius: 7px;
+  width: 45%;
+  height: 50%;
+ 
+}
+.modal-content #text{
+  padding-top: 6%;
+  font-size: 20px;
+}
+
+/* The Close Button */
+.close {
+  color: #2C3E50;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+#btn1 {
+  background-color: #24751d;
+  color: white;
+  padding: 15px 55px;
+  border: none; 
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 20px;
+  float: right;
+  margin-right: 45px;
+  position: fixed;
+  bottom: 40%;
+  left: 28.5%;
+}
+
+#btn2 {
+  background-color: #2C3E50;
+  color: white;
+  padding: 15px 55px;
+  border: none; 
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 20px;
+  float: right;
+  margin-right: 45px;
+  position: fixed;
+  bottom: 40%;
+  right: 25%;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.alert {
+  padding: 15px; 
+  margin-top: -4%;
+  background-color: #f44336;
+  color: white;
+  height: 50px;
+  width: 855px;
+  position: absolute;
+  top: 12%;
+  right: 7.5%;
+  font-family: cursive;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  display: none;
+}
+
+.alert1 {
+  padding: 15px; 
+  margin-top: -4%;
+  background-color: #f44336;
+  color: white;
+  height: 50px;
+  width: 545px;
+  position: absolute;
+  top: 9.5%;
+  right: 32%;
+  font-family: cursive;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  display: none;
+  
+}
+.closebtn1 {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn1:hover {
+  color: black;
+}
+
+
+
+
 
 
 

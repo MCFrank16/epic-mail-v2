@@ -19,14 +19,20 @@ const CheckToken = {
       const decoded = jwt.verify(token, process.env.SECRET);
       const querytext = userQuery.getUser;
 
-      const { rows } = await Pool.query(querytext, [decoded.userId]);
+      const { rows } = await Pool.query(querytext, [decoded.userId, decoded.userEmail,
+        decoded.userFirstname, decoded.userLastname]);
       if (!rows[0]) {
         return res.send({
           status: 400,
           message: 'Failed to authenticate',
         });
       }
-      req.user = { id: decoded.userId };
+      req.user = {
+        id: decoded.userId,
+        email: decoded.userEmail,
+        firstname: decoded.userFirstname,
+        lastname: decoded.userLastname,
+      };
       next();
       return true;
     } catch (error) {

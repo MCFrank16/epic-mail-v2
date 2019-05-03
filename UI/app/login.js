@@ -34,6 +34,7 @@ signInBtn.onclick = () => {
       if (res.status === 200 && res.data.token) {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('isAdmin', res.data.userRole);
+        localStorage.setItem('loggedInUser', res.data.userEmail);
 
         if (res.data.userRole === true) {
           setTimeout(() => {
@@ -42,7 +43,7 @@ signInBtn.onclick = () => {
           return;
         }
         setTimeout(() => {
-          window.location.href = 'index';
+          window.location.href = 'compose/email';
         }, 2000);
       }
     }).catch((err) => {

@@ -15,6 +15,7 @@
 		"Request": true,
 		"localStorage": true,
 		"FormData": true,
-		"google": true
+		"google": true,
+		"event": true
     }
 }

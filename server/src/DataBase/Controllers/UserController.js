@@ -63,13 +63,15 @@ class UserController {
           message: 'Something is wrong with your credentials!!!',
         });
       }
-      const token = Auth.generateToken(rows[0].id);
+      const token = Auth.generateToken(rows[0].id, rows[0].email, rows[0].firstname, rows[0].lastname);
       const userRole = rows[0].isadmin;
+      const userEmail = rows[0].email;
       return res.status(200).send({
         status: 200,
         data: {
           token,
           userRole,
+          userEmail,
         },
       });
     } catch (error) {
