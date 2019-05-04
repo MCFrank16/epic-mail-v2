@@ -165,3 +165,10 @@ a{color:inherit;text-decoration:none}
     font-family: 'Courier New', Courier, monospace;
     font-size: 15px;
 }
+
+#topError {
+	color: #f4511e;
+	position: absolute;
+	top: 5%;
+	left: 23%;
+}

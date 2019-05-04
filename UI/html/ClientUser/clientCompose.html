@@ -3,33 +3,33 @@
   <head>
     <meta charset="utf-8">
     <Title>Compose Messages</Title>
-    <link rel="stylesheet" href="../admin/style/dashboard.css">
-    <link rel= "stylesheet" href= "../admin/style/style.css">
-    <link rel="shortcut icon" href= "../admin/images/favicon.ico">
-    <script src="../admin/js/dashboard.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../CSS/dashboard.css">
+    <link rel= "stylesheet" type="text/css" href= "../../CSS/style.css">
   </head>
   <body>
     <div class= "container">
       <div class="sidebar">
         <h5 class="appName"><a href="#">Epic Mail</a></h5>
         <ul>
-            <li class="active"><a href="clientCompose.html">&nbsp; &nbsp; &nbsp; Compose message</a></li>
-            <li><a href="clientInbox.html">&nbsp; &nbsp; &nbsp; Inbox Messages</a></li>
-            <li><a href="clientSentMessage.html">&nbsp; &nbsp; &nbsp; Sent Messages</a></li>
-            <li><a href="clientdraftMessage.html">&nbsp; &nbsp; &nbsp; Draft Messages</a></li>
-            <li><a href="../Login.html">&nbsp; &nbsp; &nbsp;  Log out</a></li>
+            <li class="active"><a href="#">Compose message</a></li>
+            <li><a href="/inbox">Inbox Messages</a></li>
+            <li><a href="/sent">Sent Messages</a></li>
+            <li><a href="/draft">Draft Messages</a></li>
+            <li><a id="logoutBTN" style="cursor:pointer;">Log out</a></li>
         </ul>
       </div>
       <div class="main">
         <div class="content">
            
            <h3 id="title">Email Composition</h3>
+           <div class="alert" id="alertError">
+  
+          </div>
            <br>
-           
-           <div class="formContainer" style="height: 450px;">
+           <div class="formContainer">
              <form>
                <label for="Recepient">Recepient</label>
-               <input type="email" id = "emailId" name= "Email" placeholder="Recepient Email" required>
+               <input type="email" id = "emailId" name= "Email" placeholder="Receiver Email" required>
 
                <label for="sujet">Subject</label>
                <input type="text" id = "subj" name= "Subject" placeholder="Email Topic" required>
@@ -37,8 +37,8 @@
                <label for="subject">Message</label>
                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
 
-               <input type="button" value="SEND" onclick="myFunction();" id="btnbtn">
-               <input type="button" value="Save as Draft" onclick="myFunction2()">
+               <input type="button" value="SEND" id="btnbtn1">
+               <input type="button" value="Save as Draft" id="draftBtn">
                
 
              </form>
@@ -53,6 +53,8 @@
     <div class="footer">
       <p id="foot"> Copyright &copy; Epic Mail 2019, <a href="#">Terms</a> and <a href="#">Privacy</a> are to be strictly followed. </p>     
    </div>
+
+   <script src="../../app/compose.js"></script>
 
   </body>
 
