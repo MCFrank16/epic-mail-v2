@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8">
     <Title>Start Group</Title>
-    <link rel="stylesheet" href="./style/dashboard.css">
-    <link rel="stylesheet" href="./style/style.css">
-    <link rel="shortcut icon" href= "./images/favicon.ico">
+    <link rel="stylesheet" href="../../CSS/dashboard.css">
+    <link rel="stylesheet" href="../../CSS/style.css">
   </head>
   <body>
     <div class= "container">
@@ -13,21 +12,22 @@
         
         <h5 class="appName"><a href="compose.html">Epic Mail</a></h5>
         <ul>
-            <li><a href="compose.html">&nbsp; &nbsp; &nbsp; Compose a message</a></li>
-            <li><a href="Inbox.html">&nbsp; &nbsp; &nbsp; Inbox Messages</a></li>
-            <li><a href="SentMessage.html">&nbsp; &nbsp; &nbsp; Sent Messages</a></li>
-            <li><a href="draftMessage.html">&nbsp; &nbsp; &nbsp; Draft Messages</a></li>
-            <li class="active"><a href="createGroup.html">&nbsp; &nbsp; &nbsp; Start a group</a></li>
-            <li><a href="myGroups.html">&nbsp; &nbsp; &nbsp; My Groups</a></li>
-            <li><a href="../Login.html">&nbsp; &nbsp; &nbsp;  Log out</a></li>
+          <li><a href="/admin/compose/email">Compose Messages</a></li>
+          <li class="active"><a href="/inbox">Inbox Messages</a></li>
+          <li><a href="/admin/sent">Sent Messages</a></li>
+          <li><a href="/admin/draft">Draft Messages</a></li>
+          <li><a href="">Start a group</a></li>
+          <li><a href="">My Groups</a></li>
+          <li><a id="logoutBTN" style="cursor:pointer;">Log out</a></li>
         </ul>
       </div>
-      <div class="main">
-        <div class="content">
+      <div class="main1">
+        <div class="content1">
            <!-- insert the contents here please-->
-           <h3 id = "spec">Start a Group</h3>
+           
+           <div class="formContainer1">
+            <h3 id = "spec">Start a Group</h3>
            <p id= "para">Groups help you starting a conversation with more than one person, So give your group a topic, add in members and let us do the rest. </p>
-           <div class="formContainer" style="margin-top: 5%;">
             <form>
               <label for="Recepient">Group Name</label>
               <input type="text" id = "groupId" name= "group" placeholder="Enter the Group name" required>
@@ -36,10 +36,10 @@
               <input type="text" id = "subj" name= "Subject" placeholder="What should we talk about here?" required>
 
               <label for ="members"> Add Members</label>
-              <input id="myInput" type="text" name="members" placeholder="Group Members" required>
+              <input id="myInput" type="text" name="members" placeholder="Type in the email of our new members" required>
 
-              <a href="compose.html"><input type="button" value="Create Group" id="btnbtn"></a>
-              <input type="button" value="Cancel" onclick="">
+              <input type="button" value="Create Group" id="btnbtn1" style="">
+              <input type="button" value="Cancel">
               
 
             </form>

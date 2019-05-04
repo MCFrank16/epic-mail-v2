@@ -36,9 +36,9 @@ signInBtn.onclick = () => {
         localStorage.setItem('isAdmin', res.data.userRole);
         localStorage.setItem('loggedInUser', res.data.userEmail);
 
-        if (res.data.userRole === true) {
+        if (res.data.userRole === 'true') {
           setTimeout(() => {
-            window.location.href = 'admin';
+            window.location.href = '/admin/compose/email';
           }, 2000);
           return;
         }
