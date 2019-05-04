@@ -115,7 +115,7 @@ signUpBtn.onclick = () => {
           return;
         }
         setTimeout(() => {
-          window.location.href = 'index';
+          window.location.href = 'inbox';
         }, 2000);
       }
     }).catch((err) => {

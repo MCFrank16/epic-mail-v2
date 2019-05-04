@@ -31,6 +31,8 @@ app.get('/index', (req, res) => {
   res.sendFile(`${uiPath}html/index.html`);
 });
 
+// serve client user pages
+
 app.get('/compose/email', (req, res) => {
   res.sendFile(`${uiPath}html/ClientUser/clientCompose.html`);
 });
@@ -49,6 +51,27 @@ app.get('/sent', (req, res) => {
 
 app.get('/draft', (req, res) => {
   res.sendFile(`${uiPath}html/ClientUser/clientdraftMessage.html`);
+});
+
+// serve admin user pages
+app.get('/admin/compose/email', (req, res) => {
+  res.sendFile(`${uiPath}html/admin/compose.html`);
+});
+
+app.get('/admin/inbox', (req, res) => {
+  res.sendFile(`${uiPath}html/admin/Inbox.html`);
+});
+
+app.get('/admin/inbox/:id', (req, res) => {
+  res.sendFile(`${uiPath}html/admin/openMail.html`);
+});
+
+app.get('/admin/sent', (req, res) => {
+  res.sendFile(`${uiPath}html/admin/SentMessage.html`);
+});
+
+app.get('/admin/draft', (req, res) => {
+  res.sendFile(`${uiPath}html/admin/draftMessage.html`);
 });
 
 app.use('*', (req, res) => res.status(404).send({
