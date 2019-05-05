@@ -5,6 +5,7 @@ import UserController from '../Controllers/UserController';
 import GroupController from '../Controllers/GroupController';
 import GroupMember from '../Controllers/GroupMemberController';
 import CheckToken from '../Middleware/Validate';
+import { checkServerIdentity } from 'tls';
 // import GroupMemberQuery from '../DB/Queries/GroupMemberQuery';
 
 dotenv.config();
@@ -55,11 +56,17 @@ router.post('/api/v1/auth/signup', UserController.registerUser);
 // login a user
 router.post('/api/v1/auth/login', UserController.loginUser);
 
+// select all emails in the system
+router.get('/api/v1/select/emails', CheckToken.validateToken, UserController.selectEmails);
+
 // create a group
 router.post('/api/v1/groups', CheckToken.validateToken, GroupController.createGroup);
 
 // get All group
-router.get('/api/v1/groups', CheckToken.validateToken, GroupController.getAllGroup);
+router.get('/api/v1/get/groups', CheckToken.validateToken, GroupController.getAllGroup);
+
+// read the number of all members
+router.get('/api/v1/get/:id/membersnumber', CheckToken.validateToken, GroupController.readGroupMember);
 
 // update a group
 router.patch('/api/v1/groups/:id/name', CheckToken.validateToken, GroupController.updateGroupName);
@@ -71,9 +78,12 @@ router.delete('/api/v1/groups/:id', CheckToken.validateToken, GroupController.de
 router.post('/api/v1/groups/:groupId/users', CheckToken.validateToken, GroupMember.addUsertoGroup);
 
 // delete a user from a group
-router.delete('/api/v1/groups/:groupId/users/:userId', CheckToken.validateToken, GroupMember.deleteUsertoGroup);
+router.delete('/api/v1/groups/delete/:groupId/users', CheckToken.validateToken, GroupMember.deleteUsertoGroup);
 
 // add a message to a group
 router.post('/api/v1/groups/:groupId/messages', CheckToken.validateToken, GroupMember.addMessageToGroup);
+
+// draft a group message
+router.post('/api/v1/groups/:groupId/draft/message', CheckToken.validateToken, GroupMember.draftMessageToGroup);
 
 export default router;

@@ -5,8 +5,7 @@
     <Title>My Group</Title>
     <link rel="stylesheet" href="../../CSS/dashboard.css">
     <link rel="stylesheet" href="../../CSS/style.css">
-    <script src="../admin/js/dashboard.js"></script>
-    <link rel="shortcut icon" href= "./images/favicon.ico">
+    <script src="../../JS/dashboard.js"></script>
   </head>
   <body>
     <div class= "container">
@@ -15,134 +14,35 @@
         <h5 class="appName"><a href="compose.html">Epic Mail</a></h5>
         <ul>
           <li><a href="/admin/compose/email">Compose Messages</a></li>
-          <li class="active"><a href="/inbox">Inbox Messages</a></li>
+          <li><a href="/admin/inbox">Inbox Messages</a></li>
           <li><a href="/admin/sent">Sent Messages</a></li>
           <li><a href="/admin/draft">Draft Messages</a></li>
-          <li><a href="">Start a group</a></li>
-          <li><a href="">My Groups</a></li>
+          <li><a href="/admin/start/group">Start a group</a></li>
+          <li class="active"><a href="">My Groups</a></li>
           <li><a id="logoutBTN" style="cursor:pointer;">Log out</a></li>
         </ul>
       </div>
-      <div class="main">
-        <div class="content">
+      <div class="main1">
+        <div class="content1">
             
-            <h3 id = "spec">My Group</h3>
-           <p id= "para"> Below are a list of all the groups you created </p>
-           <div class="formContainer" style="margin-top: 5%; height: 550px">
-              <form>
+           <div class="formContainer1">
+              <h3 id = "spec">My Group</h3>
+              <p id= "para"> Below are a list of all the groups you created </p>
                   <input type="text" id="myInput1" onkeyup="myFunctionGr()" placeholder="Search for your groups....." title="Type in a name">
   
-                  <table id="myTable">
+                  <table id="myTable1">
+                    <thead>
                     <tr class="header">
-                      <th style="width:30%;">Group Name</th>
-                      <th style="width:20%;">Members</th>
-                      <th style="width:20%">Creation Date</th>
-                      <th style="width: 30%">Action</th>
+                      <th>Group Name</th>
+                      <th>Topic</th>
+                      <th>Creation Date</th>
+                      <th>Action</th>
                     </tr>
-                    
-                    <tr>
-  
-                      <td>Boston Celtics</td>
-                      <td>65 Members</td>
-                      <td>23 jan 2009</td>
-                      <td>
-                        <div class="tile_div">
-
-                        <a id="view" href="GroupSettings.html">View Details</a>
-                        
-
-                        </div>
-                      </td>
-                      
-                      
-                    </tr>
-                    
-                    
-                    <tr>
-  
-                        <td>Golden state warriors fans</td>
-                        <td>65 Members</td>
-                        <td>23 jan 2009</td>
-                        <td>
-                          <div class="tile_div">
-                          <a id="view" href="#">View Details</a>
-                          </div>
-                        </td>
-                        
-                        
-                      </tr>
-                    
-                      <tr>
-  
-                          <td>The Friends</td>
-                          <td>65 Members</td>
-                          <td>23 jan 2009</td>
-                          <td>
-                            <div class="tile_div">
-                            <a id="view" href="#">View Details</a>
-                            </div>
-                          </td>
-
-                        </tr>
-                        
-                    <tr>
-  
-                        <td>Les copains</td>
-                        <td>65 Members</td>
-                        <td>23 jan 2000</td>
-                        <td>
-                          <div class="tile_div">
-                          <a id="view" href="#">View Details</a>
-                          </div>
-                        </td>
-                        
-                        
-                      </tr>
-                    
-                      <tr>
-  
-                          <td>Intwali za yesu</td>
-                          <td>35 Members</td>
-                          <td>15 feb 2012</td>
-                          <td>
-                            <div class="tile_div">
-                            <a id="view" href="#">View Details</a>
-                            </div>
-                          </td>
-                          
-                          
-                        </tr>
-                        
-                    <tr>
-  
-                        <td>Inshuti</td>
-                        <td>69 Members</td>
-                        <td>23 jan 2009</td>
-                        <td>
-                          <div class="tile_div">
-                          <a id="view" href="#">View Details</a>
-                          </div>
-                        </td>
-                        
-                        
-                      </tr>
-                      
-                      <tr>
-  
-                          <td>Amigos</td>
-                          <td>23 Members</td>
-                          <td>12 jan 2009</td>
-                          <td>
-                            <div class="tile_div">
-                            <a id="view" href="#">View Details</a>
-                            </div>
-                          </td>
-                          
-                          
-                        </tr>  
+                    </thead>
+                    <tbody id="myGroupBody">
+                    </tbody>                  
                   </table>
-  
-              </form>
+
            </div> 
           </div>
     </div>
@@ -150,7 +50,7 @@
     <div class="footer">
       <p id="foot"> Copyright &copy; Epic Mail 2019, <a href="#">Terms</a> and <a href="#">Privacy</a> are to be strictly followed. </p>     
    </div>
-
+  <script src="../../app/getGroups.js"></script>
 
   </body>
 

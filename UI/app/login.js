@@ -31,12 +31,15 @@ signInBtn.onclick = () => {
       setTimeout(() => {
         topError.innerHTML = '';
       }, 2500);
-      if (res.status === 200 && res.data.token) {
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('isAdmin', res.data.userRole);
-        localStorage.setItem('loggedInUser', res.data.userEmail);
+      if (res.status === 200 && res.token) {
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('isAdmin', res.result.userRole);
+        localStorage.setItem('loggedInUser', res.result.userEmail);
+        localStorage.setItem('userFirstname', res.result.userFirstname);
+        localStorage.setItem('userLastname', res.result.userLastname);
+        localStorage.setItem('userId', res.result.userId);
 
-        if (res.data.userRole === 'true') {
+        if (res.result.userRole === 'true') {
           setTimeout(() => {
             window.location.href = '/admin/compose/email';
           }, 2000);

@@ -5,8 +5,7 @@
     <Title>Group Settings</Title>
     <link rel="stylesheet" href="../../CSS/dashboard.css">
     <link rel="stylesheet" href="../../CSS/style.css">
-    <script src="../admin/js/dashboard.js"></script>
-    <link rel="shortcut icon" href= "./images/favicon.ico">
+    <script src="../../JS/dashboard.js"></script>
   </head>
   <body>
     <div class= "container">
@@ -15,37 +14,34 @@
         <h5 class="appName"><a href="compose.html">Epic Mail</a></h5>
         <ul>
           <li><a href="/admin/compose/email">Compose Messages</a></li>
-          <li class="active"><a href="/inbox">Inbox Messages</a></li>
+          <li><a href="/admin/inbox">Inbox Messages</a></li>
           <li><a href="/admin/sent">Sent Messages</a></li>
           <li><a href="/admin/draft">Draft Messages</a></li>
-          <li><a href="">Start a group</a></li>
-          <li><a href="">My Groups</a></li>
+          <li><a href="/admin/start/group">Start a group</a></li>
+          <li class="active"><a href="/admin/myGroups">My Groups</a></li>
           <li><a id="logoutBTN" style="cursor:pointer;">Log out</a></li>
         </ul>
       </div>
       <div class="main">
         <div class="content">
-            
-            <h3 id = "spec">Golden State Warriors Fan</h3>
-                  
+          <h3 id = "spec" style="color:black;"></h3>
+          <input type="button" value="Delete" id="renamebtn">
+          <input type="button" value="Members List" id="renamebtn2">      
             <!--<p id= "para"> You can modify or delete your group by clicking on the delete button </p>-->
 
-            <input type="button" value="Delete" id="renamebtn">
-            <input type="button" value="Members List" id="renamebtn2">
-
-            <div class="formContainer" style="margin-top: 15%; height: 400px">
+            <div class="formContainer" style="margin-top: 10%; height: 450px">
+              
+                    <form autocomplete="off">
                     
-                    <form>
-                    
-                        <input type="text" name= "Email" placeholder="Add a Member to your group" id="add" required>
-                        <button id="btn5" onclick="" class="addBtn">Add</button>    
-                        <input type="text" name= "Subject" placeholder="Remove a Member from your group" id="remove" required>
-                        <button id="btn5" onclick="" class="addBtn">Remove</button>
+                        <input type="autocomplete" name= "Email" placeholder="Add a Member to your group" id="add">
+                        <button id="btnAdd" onclick="" class="addBtn">Add</button>    
+                        <input type="autocomplete" name= "Subject" placeholder="Remove a Member from your group" id="remove">
+                        <button id="btnRemove" onclick="" class="addBtn">Remove</button>
         
-                        <textarea id="subject" name="subject" placeholder="Write something to your group.." style="height:200px" required></textarea>
+                        <textarea id="subject" name="subject" placeholder="Write something to your group.." style="height:200px"></textarea>
          
-                        <input type="submit" value="SEND" onclick="myFunction()" id= "btnbtn">
-                        <input type="button" value="Save as Draft" onclick="myFunction2();">
+                        <input type="button" value="SEND" onclick="myFunction()" id= "btnbtn1">
+                        <input type="button" id="draftBtn" value="Save as Draft" onclick="myFunction2(); ">
                     </form>
             </div>
 
@@ -58,7 +54,7 @@
       <p id="foot"> Copyright &copy; Epic Mail 2019, <a href="#">Terms</a> and <a href="#">Privacy</a> are to be strictly followed. </p>     
    </div>
 
-
+  <script src="../../app/groupsettings.js"></script>
   </body>
 
 </html>

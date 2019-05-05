@@ -74,6 +74,18 @@ app.get('/admin/draft', (req, res) => {
   res.sendFile(`${uiPath}html/admin/draftMessage.html`);
 });
 
+app.get('/admin/start/group', (req, res) => {
+  res.sendFile(`${uiPath}html/admin/createGroup.html`);
+});
+
+app.get('/admin/mygroups', (req, res) => {
+  res.sendFile(`${uiPath}html/admin/myGroups.html`);
+});
+
+app.get('/admin/mygroup/:id', (req, res) => {
+  res.sendFile(`${uiPath}html/admin/GroupSettings.html`);
+});
+
 app.use('*', (req, res) => res.status(404).send({
   Status: 404,
   Message: 'URL not Found',

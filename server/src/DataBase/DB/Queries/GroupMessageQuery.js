@@ -3,10 +3,10 @@ const GroupMessage = `
 CREATE TABLE IF NOT EXISTS 
 GroupMessage (
  id UUID PRIMARY KEY,
- createdon TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ createdon VARCHAR(255) NOT NULL,
  subject VARCHAR(255) NOT NULL,
  message VARCHAR(255) NOT NULL,
- status VARCHAR(255) NOT NULL,
+ senderstatus VARCHAR(255) NOT NULL,
  parentmessageid UUID NOT NULL,
  groupid UUID NOT NULL,
  ownerid UUID NOT NULL,
@@ -19,7 +19,7 @@ const addMessage = ` INSERT INTO GroupMessage (
     createdon,
     subject,
     message,
-    status,
+    senderstatus,
     parentmessageid,
     groupid,
     ownerid
