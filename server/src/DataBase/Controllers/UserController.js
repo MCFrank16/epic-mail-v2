@@ -64,20 +64,47 @@ class UserController {
         });
       }
       const token = Auth.generateToken(rows[0].id, rows[0].email, rows[0].firstname, rows[0].lastname);
-      const userRole = rows[0].isadmin;
-      const userEmail = rows[0].email;
+      
+      const result = {
+        userRole: rows[0].isadmin,
+        userEmail: rows[0].email,
+        userFirstname: rows[0].firstname,
+        userLastname: rows[0].lastname,
+        userId: rows[0].id,
+      };
+
       return res.status(200).send({
         status: 200,
-        data: {
-          token,
-          userRole,
-          userEmail,
-        },
+        token,
+        result,
       });
     } catch (error) {
       return res.status(400).send({
         status: 400,
         message: error,
+      });
+    }
+  }
+
+  static async selectEmails(req, res) {
+    const queryText = queries.selectEmails;
+
+    try {
+      const { rows } = await Pool.query(queryText);
+      if (!rows) {
+        return res.status(404).send({
+          status: 404,
+          message: 'any emails found',
+        });
+      }
+      return res.status(200).send({
+        status: 200,
+        data: rows,
+      });
+    } catch (err) {
+      return res.status(400).send({
+        status: 400,
+        message: 'Bad request to the server',
       });
     }
   }

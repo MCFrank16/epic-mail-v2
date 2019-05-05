@@ -8,37 +8,24 @@ class Group {
   // post/ create a group
   static async createGroup(req, res) {
     const {
-      name, role,
+      GroupName, Topic,
     } = req.body;
 
-    if (!name || !role) {
+    if (!GroupName || !Topic) {
       return res.status(400).send({
         status: 400,
         message: 'Please fill in all the requirements',
       });
     }
 
-    if (!validate.validateName(name)) {
-      return res.status(400).send({
-        status: 400,
-        message: 'Please enter a valid name',
-      });
-    }
-
-    if (!validate.validateName(role)) {
-      return res.status(400).send({
-        status: 400,
-        message: 'Please enter a valid role',
-      });
-    }
-
     const queryText = GroupQuery.createGroup;
     const values = [
       uuid.v4(),
-      name,
-      role,
+      GroupName,
+      `${req.user.firstname} ${req.user.lastname}`,
+      Topic,
       req.user.id,
-      moment(new Date()),
+      new Date().toLocaleDateString(),
     ];
 
     try {
@@ -56,16 +43,23 @@ class Group {
   }
 
   static async getAllGroup(req, res) {
+    const val = [req.user.id];
     const all = GroupQuery.getAllGroup;
 
     try {
-      const { rows, rowCount } = await Pool.query(all, [req.user.id]);
+      const { rows } = await Pool.query(all, val);
+      if (!rows) {
+        return res.status(400).send({
+          status: 400,
+          message: 'You have created any group',
+        });
+      }
       return res.status(200).send({
         status: 200,
         data: rows,
-        rowCount,
       });
     } catch (error) {
+      console.log(error);
       return res.status(400).send({
         status: 400,
         message: error,
@@ -121,6 +115,32 @@ class Group {
       return res.status(200).send({
         status: 200,
         message: 'Group Deleted',
+      });
+    } catch (error) {
+      return res.status(404).send({
+        status: 404,
+        message: error,
+      });
+    }
+  }
+
+  static async readGroupMember(req, res) {
+    const countAll = GroupQuery.getAllMembers;
+    const { id } = req.params;
+    const values = [id];
+
+    try {
+      const { rows } = await Pool.query(countAll, values);
+      if (!rows[0]) {
+        return res.status(404).send({
+          status: 404,
+          message: 'No Group found with such ID',
+        });
+      }
+
+      return res.status(200).send({
+        status: 200,
+        data: rows[0],
       });
     } catch (error) {
       return res.status(404).send({

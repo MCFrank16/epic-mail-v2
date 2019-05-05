@@ -29,6 +29,7 @@ const saveUser = `INSERT INTO users(
 const loginUser = 'SELECT * FROM users WHERE email = $1 LIMIT 1';
 const getUser = ' SELECT * FROM users WHERE id = $1 AND email = $2 AND firstname = $3 AND lastname = $4';
 const dropUser = 'DROP TABLE IF EXISTS users';
+const selectEmails = ' SELECT email, firstname, lastname FROM users ';
 
 export default {
   dropUser,
@@ -36,4 +37,5 @@ export default {
   usersTable,
   loginUser,
   getUser,
+  selectEmails,
 };
