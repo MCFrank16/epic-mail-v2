@@ -13,45 +13,50 @@
         <h5 class="appName"><a href="compose.html">Epic Mail</a></h5>
         <ul>
           <li><a href="/admin/compose/email">Compose Messages</a></li>
-          <li class="active"><a href="/inbox">Inbox Messages</a></li>
+          <li><a href="/admin/inbox">Inbox Messages</a></li>
           <li><a href="/admin/sent">Sent Messages</a></li>
           <li><a href="/admin/draft">Draft Messages</a></li>
-          <li><a href="">Start a group</a></li>
-          <li><a href="">My Groups</a></li>
+          <li class="active"><a href="/admin/start/group">Start a group</a></li>
+          <li><a href="/admin/myGroups">My Groups</a></li>
           <li><a id="logoutBTN" style="cursor:pointer;">Log out</a></li>
         </ul>
       </div>
-      <div class="main1">
-        <div class="content1">
-           <!-- insert the contents here please-->
-           
-           <div class="formContainer1">
-            <h3 id = "spec">Start a Group</h3>
-           <p id= "para">Groups help you starting a conversation with more than one person, So give your group a topic, add in members and let us do the rest. </p>
-            <form>
-              <label for="Recepient">Group Name</label>
-              <input type="text" id = "groupId" name= "group" placeholder="Enter the Group name" required>
-
-              <label for="sujet">Topic</label>
-              <input type="text" id = "subj" name= "Subject" placeholder="What should we talk about here?" required>
-
-              <label for ="members"> Add Members</label>
-              <input id="myInput" type="text" name="members" placeholder="Type in the email of our new members" required>
-
-              <input type="button" value="Create Group" id="btnbtn1" style="">
-              <input type="button" value="Cancel">
+      <div class="main">
+          <div class="content">
+             <!-- insert the contents here please-->
+            <h3 id = "spec" style="color:blueviolet;">Start a Group</h3>
+             <p id= "para" style="color:brown">Groups help you starting a conversation with more than one person, So give your group a topic, add in members and let us do the rest. </p>
+             <div class="alert" id="alertError">Error message</div>
+             
+             <div class="formContainer123" style="margin-top: 4%; height:400px; ">
               
-
-            </form>
-           </div> 
-
-           
-          </div>
-    </div>
+              <form>
+                <label for="Recepient">Group Name</label>
+                <input type="text" id = "groupName" name= "group" placeholder="Enter the Group name" required>
+  
+                <label for="sujet">Topic</label>
+                <input type="text" id = "subj" name= "Subject" placeholder="What should we talk about here?" required>
+  
+                <!-- <label for ="members"> Add Members</label>
+                <input id="myInput" type="text" name="members" placeholder="Type in the email of our new members" required> -->
+  
+                <input type="button" value="Create Group" id="btnbtn1">
+                <input type="button" value="Cancel" id="cancelBtn">
+                
+  
+              </form>
+             </div> 
+  
+             
+            </div>
+      </div>
+  
 
     <div class="footer">
       <p id="foot"> Copyright &copy; Epic Mail 2019, <a href="#">Terms</a> and <a href="#">Privacy</a> are to be strictly followed. </p>     
    </div>
+
+   <script src="../../app/startGroup.js"></script>
 
   </body>
 

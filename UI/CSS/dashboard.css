@@ -175,7 +175,26 @@ ul li a {
     height: 490px;
     margin-top: -2%;
   }
+
+  .formContainer123 {
+    border-radius: 5px;
+    background-color: #6a6f8c;
+    padding: 90px;
+    height: 490px;
+    margin-top: -2%;
+  }
   input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+
+  input[type=autocomplete] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -220,7 +239,16 @@ ul li a {
     width: 650px;
   }
 
-  #btn5{
+  #btnAdd{
+    width: 147px;
+    height: 42px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+
+  }
+
+  #btnRemove{
     width: 147px;
     height: 42px;
     border-radius: 5px;
@@ -535,13 +563,14 @@ ul li a {
     display: block;
     float: left;
     height: 40px;
-    width: 250px;
+    width: 100px;
     margin-right: 5px;
     background-color: #f4511e;
     text-align: center;
-    line-height: 50px;
-    text-decoration: none;
     color: aliceblue;
+    padding: 10px 15px;
+    border-radius: 3px;
+    font-family: cursive;
 }
 
 #deleteBtn {
@@ -656,6 +685,10 @@ ul li a {
   border: none; 
   border-radius: 25px;
   cursor: pointer;
+  
+  }
+  
+  #myUL {
   font-size: 20px;
   float: right;
   margin-right: 45px;
@@ -720,6 +753,30 @@ ul li a {
   color: black;
 }
 
+/*  */
+
+#AddBtn {
+  position: absolute;
+  width: 95px;
+  height: 43px;
+  right: 56%;
+  top: 72.5%;
+  padding: 10px 5px;
+}
+
+#btnbtn123 {
+  
+  background-color: #24751d;
+  color: white;
+  padding: 15px 55px;
+  border: none; 
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 20px;
+  float: left;
+  margin-left: 10%;
+  top: 510%;
+}
 
 
 
