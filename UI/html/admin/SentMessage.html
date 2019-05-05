@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<Title>Sent Messages </Title>
+<link rel="stylesheet" href="../../CSS/dashboard.css">
+<link rel="stylesheet" href="../../CSS/style.css">
+<script src="../../JS/dashboard.js"></script>
+</head>
+<body>
+<div class= "container">
+<div class="sidebar">
+<h5 class="appName"><a href="#">Epic Mail</a></h5>
+<ul>
+<li><a href="/admin/compose/email">Compose Messages</a></li>
+<li><a href="/admin/inbox">Inbox Messages</a></li>
+<li class="active"><a href="#">Sent Messages</a></li>
+<li><a href="/admin/draft">Draft Messages</a></li>
+<li><a href="/admin/start/group">Start a group</a></li>
+<li><a href="/admin/myGroups">My Groups</a></li>
+<li><a id="logoutBTN" style="cursor:pointer;">Log out</a></li>
+</ul>
+</div>
+<div class="main1">
+<div class="content1">
+<!-- insert the contents here please-->
+
+
+<div class="formContainer1">
+<h3 id = "spec">Sent Messages</h3>
+<p id= "para">Click below on any row and check out your Sent Email Messages </p>
+<p id="errMessage"></p>
+
+<input type="text" id="myInput1" placeholder="Search for Mails....." title="Type in a name">
+
+<table id="myTable1">
+<thead>
+<tr class="header">
+<th>To</th>
+<th>&nbsp;&nbsp; Subject</th>
+<th>&nbsp;&nbsp;Status</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody id="sentBody">
+
+</tbody>
+
+</table>
+
+
+</div>
+
+<!--Open sent messages modal-->
+<div class="modal" id="myModal">
+<div class="modal-content">
+<span class="close">&times;</span>  
+<p style ="color:white;" id="text">
+
+</p>
+
+<input type="button" value="Cancel" id="btn2">
+<input type="button" value="Delete" id="btn1">
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="footer">
+<p id="foot"> Copyright &copy; Epic Mail 2019, <a href="#">Terms</a> and <a href="#">Privacy</a> are to be strictly followed. </p>     
+</div>
+
+<script src="../../app/sentBox.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+{
+  "name": "epicmailservice",
+  "version": "1.0.0",
+  "description": "This is a messaging platform which let its user interact with each other. #AndelaChallenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=text mocha --require @babel/register --require @babel/polyfill --timeout 5000 server/tests/**/**/*.js --exit",
+    "start": "nodemon --exec babel-node server.js",
+    "db": "babel-node server/src/DataBase/DB/db.js",
+    "dbTest": "babel-node server/src/DataBase/DB/testDB.js",
+    "build": "babel server/src --out server/dist",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "serve": "node server/dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MCFrank16/EpicMail.git"
+  },
+  "keywords": [],
+  "author": "Frank C. Mutabazi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MCFrank16/EpicMail/issues"
+  },
+  "homepage": "https://github.com/MCFrank16/EpicMail#readme",
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.0",
+    "moment": "^2.24.0",
+    "nodemon": "^1.18.10",
+    "pg": "^7.8.2",
+    "serve-favicon": "^2.5.0",
+    "swagger-ui-express": "^4.0.2",
+    "uuid": "^3.3.2",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-datetime": "^1.5.0",
+    "chai-http": "^4.2.1",
+    "chai-uuid": "^1.0.6",
+    "coveralls": "^3.0.3",
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "istanbul": "^0.4.5",
+    "make-runnable": "^1.3.6",
+    "mocha": "^6.0.2",
+    "mochawesome": "^3.1.1",
+    "nyc": "^13.3.0"
+  }
+}

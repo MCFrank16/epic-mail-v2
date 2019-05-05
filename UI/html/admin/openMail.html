@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Title>Message</Title>
+    <link rel="stylesheet" href="../../CSS/dashboard.css">
+    <link rel="stylesheet" href="../../CSS/style.css">
+    <script src="../../JS/dashboard.js"></script>
+  </head>
+  <body>
+    <div class= "container">
+      <div class="sidebar">
+        <h5 class="appName"><a href="#">Epic Mail</a></h5>
+        <ul>
+            <li><a href="/admin/compose/email">Compose Messages</a></li>
+            <li class="active"><a href="/inbox">Inbox Messages</a></li>
+            <li><a href="/admin/sent">Sent Messages</a></li>
+            <li><a href="/admin/draft">Draft Messages</a></li>
+            <li><a href="/admin/start/group">Start a group</a></li>
+            <li><a href="/admin/myGroups">My Groups</a></li>
+            <li><a id="logoutBTN" style="cursor:pointer;">Log out</a></li>
+        </ul>
+      </div>
+      <div class="main1">
+        <div class="content1">
+           <!-- insert the contents here please-->
+           <h3 id = "spec" style="color:coral; text-align: center;"></h3>
+           <div class="alert1" id="alertError"></div>
+           <input type="button" value="Delete" id="deleteBtn">
+           
+
+           <div class="formContainer12">
+            
+            <div id = "replyBox">              
+                
+            </div>
+
+<input type="text" id="myInput11" placeholder="Write your message..." title="Type in a message">
+
+<a href="#"><input type="button" value="Reply" id="btnbtn"></a>
+<!--<a href="clientInbox.html"><input type="button" value="Cancel" style="margin:45px; margin-right:250px;border-radius:25px;position:fixed;"></a>-->
+            
+</div>
+
+<div id="replySnack">Message Sent</div>
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="footer">
+<p id="foot"> Copyright &copy; Epic Mail 2019, <a href="#">Terms</a> and <a href="#">Privacy</a> are to be strictly followed. </p>     
+</div>
+
+<script src="../../app/openMail.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+body {
+  background-image: url(../Images/landscape-2979296_1920.jpg);
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:#f4511e;
+    color: white;
+    text-align: center;
+
+}
+
+#foot{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+}
+
+#welcome{
+    font-family: 'Belleza';
+    font-size: 50px;
+    text-align: center;
+    color: aliceblue;
+}
+
+.buttons{
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 65%;
+  left: 35%;
+}
+#fast{
+    font-family: 'Belleza';
+    font-size: 30px;
+    text-align: center;
+    color: antiquewhite
+}
+
+.lgnBtn{
+    
+display: inline-block;
+border-radius: 4px;
+background-color: #f4511e;
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 28px;
+padding: 20px;
+width: 200px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+
+}
+      
+.lgnBtn span {
+cursor: pointer;
+display: inline-block;
+position: relative;
+transition: 0.5s;
+}
+
+.lgnBtn span:after {
+content: '\00bb';
+position: absolute;
+opacity: 0;
+top: 0;
+right: -20px;
+transition: 0.5s;
+}
+
+.lgnBtn:hover span {
+padding-right: 25px;
+}
+
+.lgnBtn:hover span:after {
+opacity: 1;
+right: 0;
+}
+
+.SgnUpBtn{
+    display: inline-block;
+border-radius: 4px;
+background-color: #f4511e;
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 28px;
+padding: 20px;
+width: 200px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+
+}
+      
+.SgnUpBtn span {
+cursor: pointer;
+display: inline-block;
+position: relative;
+transition: 0.5s;
+}
+
+.SgnUpBtn span:after {
+content: '\00bb';
+position: absolute;
+opacity: 0;
+top: 0;
+right: -20px;
+transition: 0.5s;
+}
+
+.SgnUpBtn:hover span {
+padding-right: 25px;
+}
+
+.SgnUpBtn:hover span:after {
+opacity: 1;
+right: 0;
+}
+

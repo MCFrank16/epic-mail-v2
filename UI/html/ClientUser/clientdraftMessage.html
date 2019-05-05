@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <Title>Draft Messages</Title>
+    <link rel="stylesheet" href="../../CSS/dashboard.css">
+    <link rel="stylesheet" href="../../CSS/style.css">
+    <script src="../../JS/dashboard.js"></script>
+  </head>
+  <body>
+    <div class= "container">
+      <div class="sidebar">
+        <h5 class="appName"><a href="#">Epic Mail</a></h5>
+        <ul>
+            <li><a href="/compose/email">Compose Messages</a></li>
+            <li><a href="/inbox">Inbox Messages</a></li>
+            <li><a href="/sent">Sent Messages</a></li>
+            <li class="active"><a href="#">Draft Messages</a></li>
+            <li><a id="logoutBTN" style="cursor:pointer;">Log out</a></li>
+        </ul>
+      </div>
+      <div class="main1">
+        <div class="content1">
+           <!-- insert the contents here please-->    
+           <div class="formContainer1">
+              <h3 id = "spec">Draft Messages</h3>
+              <div class="alert1" id="alertError" style="width:93%; margin-top: 0%; right:3.5%;"></div>
+              <p id= "para">Click below on any row and open out the Messages you have drafted to either resend it or delete it. </p> 
+               
+  
+                <input type="text" id="myInput1" onkeyup="myFunctionS()" placeholder="Search for Mails....." title="Type in a name">
+
+                <table id="myTable1">
+                  <thead class="header">
+                  <tr>
+                    <th>To</th>
+                    <th>&nbsp; &nbsp;Subject</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                  <tbody id="draftBody">
+
+                  </tbody>                 
+                  
+                </table>
+            
+          </div>
+
+          <!--Open draft messages modal-->
+<div class="modal" id="myModal">
+    <div class="modal-content">
+    <span class="close">&times;</span>  
+    <p style ="color:white;" id="text">
+    
+    </p>
+    
+    <input type="button" value="Delete" id="btn2">
+    <input type="button" value="Resend" id="btn1">
+    </div>
+    </div>
+           
+        </div>
+        </div>
+ 
+      </div>
+    </div>
+
+    <div class="footer">
+      <p id="foot"> Copyright &copy; Epic Mail 2019, <a href="#">Terms</a> and <a href="#">Privacy</a> are to be strictly followed. </p>     
+   </div>
+
+   <script src="../../app/draftBox.js"></script>
+  </body>
+
+</html>
