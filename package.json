@@ -8,7 +8,6 @@
       "start": "nodemon --exec babel-node server.js",
       "db": "babel-node server/src/DataBase/DB/db.js",
       "dbTest": "babel-node server/src/DataBase/DB/testDB.js",
-      "build": "babel server/src --out server/dist",
       "coverage": "nyc report --reporter=text-lcov | coveralls",
       "serve": "node server/dist/server.js"
     },
