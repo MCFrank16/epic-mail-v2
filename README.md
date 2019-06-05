@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/MCFrank16/epic-mail-v2.svg?branch=develop)](https://travis-ci.org/MCFrank16/epic-mail-v2)
 [![Coverage Status](https://coveralls.io/repos/github/MCFrank16/epic-mail-v2/badge.svg?branch=develop)](https://coveralls.io/github/MCFrank16/epic-mail-v2?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e95856b3295841c9681a/maintainability)](https://codeclimate.com/github/MCFrank16/epic-mail-v2/maintainability)
+[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
 This is a messaging platform which let its user interact with each other. #AndelaChallenge
 
